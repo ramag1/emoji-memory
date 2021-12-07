@@ -5,9 +5,7 @@ const totalMatchesInGrid = 2;
 /*----- app's state (variables) -----*/
 let matchTracker = 0;
 
-let moves = [
-	
-]
+let moves = [];
 
 
 /*----- cached element references -----*/
@@ -32,21 +30,23 @@ function init(evt) {
 }
 
 function moveOne (evt) {
-	//assign class name of clicked element/card selected to moves object
+	//push class name of clicked element/card selected to moves object
 	moves.push(evt.target.getAttribute('class'));
 } 	
 
 function moveTwo (evt) {
-	//assign class name of clicked element/card selected to moves object
+	//push class name of clicked element/card selected to moves object
 	moves.push(evt.target.getAttribute('class'));
+	// turn over players choice by adding 2nd class to the element selected
+	// evt.target.classList.add('class2');
 	if (moves[0] === moves[1]) {
 		matchTracker++
 		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`
 	} else {
 		matchTrackerHeader.innerText = "Not a match"
+		// remove class2 from both divs (reverting back to original)
 	}
-}	// turn over players choice by adding 2nd class to the element selected
-	// evt.target.classList.add('class2');
+}	
 
 	console.log(moves)    
    
