@@ -5,7 +5,7 @@ const totalMatchesInGrid = 2;
 /*----- app's state (variables) -----*/
 let matchTracker = 0;
 
-let moves = [];
+let movesEvaluationArray = [];
 
 
 /*----- cached element references -----*/
@@ -14,45 +14,57 @@ const resetBtn = document.querySelector('button');
 let matchTrackerHeader = document.querySelector("h2");
 
 /*----- event listeners -----*/
-matchGrid.addEventListener('click', moveOne);
-matchGrid.addEventListener('click', moveTwo);
+matchGrid.addEventListener('click', selectCard1);
+matchGrid.addEventListener('click', selectCard2);
 // resetBtn.addEventListener('click', init);
 
 /*----- functions -----*/
 
 // function init() {
-//     sets matchGrid divs to first class only/clears out any 2nd classes from previous matches
-// }
+	// sets matchGrid divs to first class only/clears out any 2nd classes from previous matches
+	// }
+	
+// function modalWinner()
 
-function init(evt) {
-	moveOne(evt);
-    moveTwo(evt); //include evaluate, if no winner then calls moveOne, if winner then prompts modal
-}
+// function startGame() {
+	// 	selectCard1();
+	//     selectCard2(); //include evaluate, if no winner then calls moveOne, if winner then prompts modal
+	// }
+	
+function selectCard1 (evt) {
+	//push class name of clicked element/card selected to moves array to change visual
+	movesEvaluationArray[0] = evt.target.getAttribute('class'); //both are showing an error that target is undefined, but it does get logged to array?
+	// movesEvaluationArray.push(evt.target.getAttribute('class'));
+	evt.stopImmediatePropagation(); // found stopImmProp to halt automatic double click i was seeing and try to allow for second click. https://stackoverflow.com/questions/33262256/add-click-event-after-another-click-event //
+	console.log(` this is moves array 0 output ${movesEvaluationArray[0]}`);
+	// return; //could this signal the break of the function?
+	selectCard2(); // not possible with return.
+} 
 
-function moveOne (evt) {
-	//push class name of clicked element/card selected to moves object
-	moves.push(evt.target.getAttribute('class'));
-} 	
-
-function moveTwo (evt) {
-	//push class name of clicked element/card selected to moves object
-	moves.push(evt.target.getAttribute('class'));
-	// turn over players choice by adding 2nd class to the element selected
+//need a solve for separating the clicks from each other as click 1 and click 2
+function selectCard2 (evt) {
+	movesEvaluationArray[1] = evt.target.getAttribute('class');
+	//push class name of clicked element/card selected to moves object to change visual
 	// evt.target.classList.add('class2');
-	if (moves[0] === moves[1]) {
+	console.log(` this is moves array 1 output ${movesEvaluationArray[1]}`);
+
+	if (movesEvaluationArray[0] === movesEvaluationArray[1]) {
+		console.log("match!")
 		matchTracker++
 		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`
+		if (matchTracker === totalMatchesInGrid) {
+			// modalWinner()
+		}
 	} else {
 		matchTrackerHeader.innerText = "Not a match"
+		// movesArr.pop.pop() //clear out array to start over with new clicks
 		// remove class2 from both divs (reverting back to original)
 	}
-}	
+}
 
-	console.log(moves)    
-   
-//CAN THESE BE COMBINED SOMEHOW? 
-//need a solve for separating the clicks from each other as click 1 and click 2
 
+
+// FIRST PASS AT PART TWO //
 // function moveTwo(evt) {
 // 	//assign class name of 2nd clicked element/card selected to moves object
 // 	evt.target.className = MOVES.moveTwo.cardSelected;
@@ -71,9 +83,8 @@ function moveTwo (evt) {
 //     moveOne();
 // }
 
-// function modalWinner()
 
-
+//  MISC THOUGHTS & STRETCH IDEAS  //
 // Push div selected to array
 // Check winner of div classes are changed
 // If not matching toggle back to old div class
