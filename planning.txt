@@ -1,0 +1,61 @@
+
+
+Outline of Game
+Game starts with console tracker of # of matches and grid of 4 cards
+
+Player is able to click on any card -> card turns over to reveal an Emoji, stays turned over
+Player clicks on second card -> card turns over to reveal Emoji
+    if cards are matching, cards stay turned over & match tracker incremented
+        if tracker === match count, player wins 
+        else player selects next card
+    if cards are different, cards turn back over and player is able to click again
+
+Upon all cards turned over as matches, "winner" modal executes & option to start over
+
+
+Pseudocode to Memory 
+
+DECLARE constants for MOVES
+DECLARE state variables for matchTracker
+
+REFERENCE matchGrid, resetBtn
+
+ATTACH event listner to matchGrid (handleClick)
+
+What's going to happen when a click is registered on the matchGrid?
+- Grab element in matchGrid and update DOM with emoji class2
+
+
+What needs to happen to register a match or fail?
+grab element from click 1, update dom add class2
+grab element from click 2, update dom add class2
+evaluate if classes match from the two clicks
+
+
+
+
+
+DECLARE 
+
+
+STRETCH ideas
+to randomize, use array index with classes of emjois and then continue to add !== && statements 
+
+
+
+
+Pseudocode to Tic-Tac-Toe
+
+DECLARE constants for playerOne, playerTwo, 
+DECLARE state variables for currentPlayer, winState, moves
+
+REFERENCE gameBoard, resetBtn
+
+ATTACH event listner to gameBoard (handleClick)
+
+What's going to happen when a click is registered on the gameBoard?
+- Add element to gameboard that represents the player's token
+    - READ currentPlayer
+    - UPDATE the dom with the token
+- Check is there is a winner
+- Switch to the next player
