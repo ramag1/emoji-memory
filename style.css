@@ -13,17 +13,16 @@ body {
     
 }
 
-.card {
+.matchOne {
     border: red 2px solid;
     width: 35%;
     height: 35%;
     background-color: coral;
 }
 
-.card.matchOneFlip{
+.matchTwo {
     border: red 2px solid;
     width: 35%;
     height: 35%;
     background-color: green;
 }
-

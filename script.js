@@ -1,20 +1,23 @@
 /*----- constants -----*/
 const totalMatchesInGrid = 2;
 
-let moves = []
-
-console.log(moves)
 
 /*----- app's state (variables) -----*/
 let matchTracker = 0;
 
+let moves = [
+	
+]
+
+
 /*----- cached element references -----*/
 const matchGrid = document.querySelector('#grid');
 const resetBtn = document.querySelector('button');
+let matchTrackerHeader = document.querySelector("h2");
 
 /*----- event listeners -----*/
 matchGrid.addEventListener('click', moveOne);
-
+matchGrid.addEventListener('click', moveTwo);
 // resetBtn.addEventListener('click', init);
 
 /*----- functions -----*/
@@ -23,20 +26,30 @@ matchGrid.addEventListener('click', moveOne);
 //     sets matchGrid divs to first class only/clears out any 2nd classes from previous matches
 // }
 
-// function playGame(event) {
-// 	console.log('hello from the gameboard.');
-// 	moveOne(event);
-//     moveTwo(event); //include evaluate, if no winner then calls moveOne, if winner then prompts modal
-// }
+function init(evt) {
+	moveOne(evt);
+    moveTwo(evt); //include evaluate, if no winner then calls moveOne, if winner then prompts modal
+}
 
-function moveOne(evt) {
-    // console.log(evt.target.className);
+function moveOne (evt) {
 	//assign class name of clicked element/card selected to moves object
-	moves.push(evt.target.id);
-	// turn over players choice by adding 2nd class to the element selected
+	moves.push(evt.target.getAttribute('class'));
+} 	
+
+function moveTwo (evt) {
+	//assign class name of clicked element/card selected to moves object
+	moves.push(evt.target.getAttribute('class'));
+	if (moves[0] === moves[1]) {
+		matchTracker++
+		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`
+	} else {
+		matchTrackerHeader.innerText = "Not a match"
+	}
+}	// turn over players choice by adding 2nd class to the element selected
 	// evt.target.classList.add('class2');
-    console.log(evt.target.id);
-}    
+
+	console.log(moves)    
+   
 //CAN THESE BE COMBINED SOMEHOW? 
 //need a solve for separating the clicks from each other as click 1 and click 2
 

@@ -15,8 +15,8 @@ Upon all cards turned over as matches, "winner" modal executes & option to start
 
 Pseudocode to Memory 
 
-DECLARE constants for MOVES
-DECLARE state variables for matchTracker
+DECLARE constants for TOTALMATCHESPOSSIBLE
+DECLARE state variables for matchTracker, moves
 
 REFERENCE matchGrid, resetBtn
 
