@@ -1,6 +1,6 @@
 /*----- constants -----*/
 const totalMatchesInGrid = 8;
-const divCount= 16; 
+ 
 
 /*----- app's state (variables) -----*/
 let matchTracker = 0;
@@ -14,38 +14,42 @@ const matchGrid = document.querySelector('#grid');
 const resetBtn = document.querySelector('button');
 const div = document.querySelectorAll(".facedown");
 let matchTrackerHeader = document.querySelector("h2");
-const close = document.querySelector("#close")
-
+const modalWinnerEl = document.querySelector("#modal")
+const closeModalEl = document.querySelector("#close")
 
 /*----- event listeners -----*/
+//Reset board when clicked
 resetBtn.addEventListener('click', init);
-for (let i = 0; i < divCount; i++) {
+//Close winner modal when clicked
+closeModalEl.addEventListener('click', closeModal);
+//Log selected card when clicked
+for (let i = 0; i < totalMatchesInGrid*2 ; i++) {
 	div[i].addEventListener('click', function (event) {
 		checkIfFirstCard(event);
 	});
 }
-// close.addEventListener('click', closeModal);
-
 
 /*----- functions -----*/
-
-const openModal = () => {
-	modal.style.display = 'block';
+//Winner modal
+function openModal() {
+	modalWinnerEl.style.display = 'block';
 };
 
-const closeModal = () => {
-	modal.style.display = 'none';
+//Close modal
+function closeModal() {
+	modalWinnerEl.style.display = 'none';
 };
 
+//Resets the board to turned over cards after Reset button has been clicked
 function init() {	
-	for (let i = 0; i < divCount; i++) {
+	for (let i = 0; i < totalMatchesInGrid*2 ; i++) {
 		div[i].classList.remove(`${div[i].classList[2]}`);
 	}	
 	matchTracker = 0;
 	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`;
 }
-	
-//per Tyler office hours, this function determines the control flow of the event listeners
+
+//Per Tyler office hours, this function determines the control flow of the event listeners so the clicks are not simulatenous
 function checkIfFirstCard (evt) { 
 	if (isFirstCard) {
 		selectCard1(evt);
@@ -54,7 +58,8 @@ function checkIfFirstCard (evt) {
 	}
 	isFirstCard = !isFirstCard;
 }
-	
+
+//Logs selected element from first click for later evaluation and reveals other side of card
 function selectCard1 (evt) {
 	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`;
 	if (evt.target.classList[1] === 'matchOne') {
@@ -78,10 +83,10 @@ function selectCard1 (evt) {
 	
 	firstCardSelectedId.push(evt.target.getAttribute("id"));
 	console.log(firstCardSelectedId)
-
+	
 	firstCardIdEl = document.getElementById(`${firstCardSelectedId[0]}`);
 } 
-		
+//Logs selected element from second click, reveals other side of card, and executes match conditional, evalutes win state
 function selectCard2 (evt) {
 	movesEvaluationArray[1] = evt.target.classList[1];
 	if (evt.target.classList[1] === 'matchOne') {
@@ -102,16 +107,14 @@ function selectCard2 (evt) {
 		evt.target.classList.add('matchEightFlip');
 	}
 	console.log(evt.target.id)
-
+	
 	if (movesEvaluationArray[0] === movesEvaluationArray[1] && evt.target.id !== firstCardSelectedId[0]) {
 		console.log("match!")
 		matchTracker++
 		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`
 		firstCardSelectedId.pop();
 		if (matchTracker === totalMatchesInGrid) {
-			setTimeout(function () {
-				openModal()}, 5000);
-			closeModal();
+			openModal();
 		}
 	} else {
 		setTimeout(function () {
@@ -125,7 +128,6 @@ function selectCard2 (evt) {
 		setTimeout(function () {
 			firstCardIdEl.classList.remove(`${firstCardIdEl.classList[2]}`);
 		}, 1980);
-		//clear out first card selected ID array
 		firstCardSelectedId.pop();
 	}
 }
