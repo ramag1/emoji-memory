@@ -22,57 +22,57 @@ body {
 
 .facedown.matchOne.matchOneFlip {
     border: red 2px solid;
-    width: 35%;
-    height: 35%;
+    width: 20%;
+    height: 20%;
     background-color: red;
 }
 
 
 .facedown.matchTwo.matchTwoFlip {
     border: red 2px solid;
-    width: 35%;
-    height: 35%;
+    width: 20%;
+    height: 20%;
     background-color: orange;
 }
 
-.facedown.matchTwo.matchThreeFlip {
+.facedown.matchThree.matchThreeFlip {
     border: red 2px solid;
-    width: 35%;
-    height: 35%;
+    width: 20%;
+    height: 20%;
     background-color: yellow;
 }
 
-.facedown.matchTwo.matchFourFlip {
+.facedown.matchFour.matchFourFlip {
     border: red 2px solid;
-    width: 35%;
-    height: 35%;
+    width: 20%;
+    height: 20%;
     background-color: green;
 }
 
-.facedown.matchTwo.matchFiveFlip {
+.facedown.matchFive.matchFiveFlip {
     border: red 2px solid;
-    width: 35%;
-    height: 35%;
+    width: 20%;
+    height: 20%;
     background-color: blue;
 }
 
-.facedown.matchTwo.matchSixFlip {
+.facedown.matchSix.matchSixFlip {
     border: red 2px solid;
-    width: 35%;
-    height: 35%;
+    width: 20%;
+    height: 20%;
     background-color: hotpink;
 }
 
-.facedown.matchTwo.matchSevenFlip {
+.facedown.matchSeven.matchSevenFlip {
     border: red 2px solid;
-    width: 35%;
-    height: 35%;
+    width: 20%;
+    height: 20%;
     background-color: purple;
 }
 
-.facedown.matchTwo.matchEightFlip {
+.facedown.matchEight.matchEightFlip {
     border: red 2px solid;
-    width: 35%;
-    height: 35%;
+    width: 20%;
+    height: 20%;
     background-color: lavender;
 }

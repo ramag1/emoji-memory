@@ -50,6 +50,18 @@ matchGrid.addEventListener('click', function (event) {
 				evt.target.classList.add('matchOneFlip');
 			} else if (evt.target.classList[1] === 'matchTwo') {
 				evt.target.classList.add('matchTwoFlip');
+			} else if (evt.target.classList[1] === 'matchThree') {
+				evt.target.classList.add('matchThreeFlip');
+			} else if (evt.target.classList[1] === 'matchFour') {
+				evt.target.classList.add('matchFourFlip');
+			} else if (evt.target.classList[1] === 'matchFive') {
+				evt.target.classList.add('matchFiveFlip');
+			} else if (evt.target.classList[1] === 'matchSix') {
+				evt.target.classList.add('matchSixFlip');
+			} else if (evt.target.classList[1] === 'matchSeven') {
+				evt.target.classList.add('matchSevenFlip');
+			} else if (evt.target.classList[1] === 'matchEight') {
+				evt.target.classList.add('matchEightFlip');
 			}
 			movesEvaluationArray[0] = evt.target.classList[1]; 
 				console.log(`This is moves array 0 output: ${movesEvaluationArray[0]}`);	
@@ -63,17 +75,30 @@ matchGrid.addEventListener('click', function (event) {
 		
 function selectCard2 (evt) {
 	movesEvaluationArray[1] = evt.target.classList[1];
-	if (evt.target.classList[1] === 'matchOne') {
-		evt.target.classList.add('matchOneFlip');
-	} else if (evt.target.classList[1] === 'matchTwo') {
-		evt.target.classList.add('matchTwoFlip');
-	}
+			if (evt.target.classList[1] === 'matchOne') {
+				evt.target.classList.add('matchOneFlip');
+			} else if (evt.target.classList[1] === 'matchTwo') {
+				evt.target.classList.add('matchTwoFlip');
+			} else if (evt.target.classList[1] === 'matchThree') {
+				evt.target.classList.add('matchThreeFlip');
+			} else if (evt.target.classList[1] === 'matchFour') {
+				evt.target.classList.add('matchFourFlip');
+			} else if (evt.target.classList[1] === 'matchFive') {
+				evt.target.classList.add('matchFiveFlip');
+			} else if (evt.target.classList[1] === 'matchSix') {
+				evt.target.classList.add('matchSixFlip');
+			} else if (evt.target.classList[1] === 'matchSeven') {
+				evt.target.classList.add('matchSevenFlip');
+			} else if (evt.target.classList[1] === 'matchEight') {
+				evt.target.classList.add('matchEightFlip');
+			}
 console.log(`This is moves array 1 output: ${movesEvaluationArray[1]}`);
 
 	if (movesEvaluationArray[0] === movesEvaluationArray[1]) {
 		console.log("match!")
 		matchTracker++
 		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`
+		firstCardSelectedId.pop();
 		if (matchTracker === totalMatchesInGrid) {
 		// modalWinner()
 		}
@@ -87,7 +112,7 @@ console.log(`This is moves array 1 output: ${movesEvaluationArray[1]}`);
 			firstCardIdEl.classList.remove(`${firstCardIdEl.classList[2]}`);
 		}, 2000);
 		//clear out first card selected ID array
-		firstCardSelectedId.pop()
+		firstCardSelectedId.pop();
 	}
 }
 
