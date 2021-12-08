@@ -1,6 +1,7 @@
 /*----- constants -----*/
 const totalMatchesInGrid = 8;
- 
+ const emojiUrl =
+		'https://emoji-api.com/emojis?access_key=93697715fde411729979cf234d31c72ed683c7b2';
 
 /*----- app's state (variables) -----*/
 let matchTracker = 0;
@@ -15,8 +16,9 @@ const matchGrid = document.querySelector('#grid');
 const resetBtn = document.querySelector('button');
 const div = document.querySelectorAll(".facedown");
 let matchTrackerHeader = document.querySelector("h2");
-const modalWinnerEl = document.querySelector("#modal")
-const closeModalEl = document.querySelector("#close")
+const modalWinnerEl = document.querySelector("#modal");
+const closeModalEl = document.querySelector("#close");
+const h2El = document.querySelector("h2");
 
 /*----- event listeners -----*/
 //Reset board when clicked
@@ -35,12 +37,10 @@ for (let i = 0; i < totalMatchesInGrid*2 ; i++) {
 function openModal() {
 	modalWinnerEl.style.display = 'block';
 };
-
 //Close modal
 function closeModal() {
 	modalWinnerEl.style.display = 'none';
 };
-
 //Resets the board to turned over cards after Reset button has been clicked
 function init() {	
 	for (let i = 0; i < totalMatchesInGrid*2 ; i++) {
@@ -81,10 +81,7 @@ function selectCard1 (evt) {
 		evt.target.classList.add('matchEightFlip');
 	}
 	movesEvaluationArray[0] = evt.target.classList[1]; 
-	
 	firstCardSelectedId.push(evt.target.getAttribute("id"));
-	console.log(firstCardSelectedId)
-	
 	firstCardIdEl = document.getElementById(`${firstCardSelectedId[0]}`);
 } 
 //Logs selected element from second click, reveals other side of card, and executes match conditional, evalutes win state
@@ -107,17 +104,13 @@ function selectCard2 (evt) {
 	} else if (evt.target.classList[1] === 'matchEight') {
 		evt.target.classList.add('matchEightFlip');
 	}
-	console.log(`this is card 2 ${evt.target.classList}`)
-
 
 	if (matchIdArr.includes(evt.target.id)) {
 		matchTrackerHeader.innerText = "You already made that match!";		
 		setTimeout(function () {
 			matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`}, 1500);	
 		matchTracker = matchTracker
-		
-	}
-	else if(movesEvaluationArray[0] === movesEvaluationArray[1] && evt.target.id !== firstCardSelectedId[0]) {
+	} else if(movesEvaluationArray[0] === movesEvaluationArray[1] && evt.target.id !== firstCardSelectedId[0]) {
 		console.log("match!")
 		matchTracker++
 		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`
@@ -143,6 +136,34 @@ function selectCard2 (evt) {
 		firstCardSelectedId.pop();
 	}
 }
+
+// FETCH API FOR EMOJI //
+
+fetch(emojiUrl)
+	.then((res) => {
+		return res.json();
+	})
+	.then((res) => {
+		console.log('success!', res);
+		console.log('name', res.slug);
+		console.log('emoji', res.character);
+
+		const smileyFace = res.slug
+
+		h2El.innerHTML = smileyFace;
+	})
+	.catch((err) => {
+		console.log('There was an error', err);
+	});
+
+
+
+
+
+
+
+
+
 
 
 
