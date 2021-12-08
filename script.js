@@ -8,6 +8,7 @@ let movesEvaluationArray = [];
 let isFirstCard = true;
 let firstCardSelectedId = [];
 let firstCardIdEl;
+let matchIdArr =[];
 
 /*----- cached element references -----*/
 const matchGrid = document.querySelector('#grid'); 
@@ -106,12 +107,23 @@ function selectCard2 (evt) {
 	} else if (evt.target.classList[1] === 'matchEight') {
 		evt.target.classList.add('matchEightFlip');
 	}
-	console.log(evt.target.id)
-	
-	if (movesEvaluationArray[0] === movesEvaluationArray[1] && evt.target.id !== firstCardSelectedId[0]) {
+	console.log(`this is card 2 ${evt.target.classList}`)
+
+
+	if (matchIdArr.includes(evt.target.id)) {
+		matchTrackerHeader.innerText = "You already made that match!";		
+		setTimeout(function () {
+			matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`}, 1500);	
+		matchTracker = matchTracker
+		
+	}
+	else if(movesEvaluationArray[0] === movesEvaluationArray[1] && evt.target.id !== firstCardSelectedId[0]) {
 		console.log("match!")
 		matchTracker++
 		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`
+		matchIdArr.push(evt.target.id);
+		matchIdArr.push(firstCardSelectedId[0]);
+		console.log(matchIdArr)
 		firstCardSelectedId.pop();
 		if (matchTracker === totalMatchesInGrid) {
 			openModal();
@@ -132,6 +144,17 @@ function selectCard2 (evt) {
 	}
 }
 
+
+
+
+// 	} else {
+// 		matchTrackerHeader.innerText = "Not a match";
+// 		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`
+// 		evt.target.classList.remove(`${evt.target.classList[2]}`);
+// 		firstCardIdEl.classList.remove(`${firstCardIdEl.classList[2]}`);
+// 		firstCardSelectedId.pop();
+// 	}
+// }
 
 // FIRST PASS AT PART TWO //
 // function moveTwo(evt) {
