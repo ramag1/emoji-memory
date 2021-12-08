@@ -1,6 +1,6 @@
 /*----- constants -----*/
 const totalMatchesInGrid = 2;
-
+const divCount= 16;
 
 /*----- app's state (variables) -----*/
 let matchTracker = 0;
@@ -14,37 +14,42 @@ const matchGrid = document.querySelector('#grid'); //look into changing this to 
 const resetBtn = document.querySelector('button');
 let matchTrackerHeader = document.querySelector("h2");
 
+const div = document.querySelectorAll(".facedown");
+
 
 /*----- event listeners -----*/
 // matchGrid.addEventListener('click', selectCard1);
 matchGrid.addEventListener('click', function (event) {
 	checkIfFirstCard(event);
 });
-// resetBtn.addEventListener('click', init);
-
+resetBtn.addEventListener('click', init);
+// div.addEventListener('click', function (event) {
+// 	checkIfFirstCard(event);
+// });
 /*----- functions -----*/
 
 // function init() {
-	// sets matchGrid divs to first class only/clears out any 2nd classes from previous matches
-	// }
+
 	
 	// function modalWinner()
+
+function init() {	
+	for (let i = 0; i < divCount; i++) {
+		console.log(div[i])	
+		div[i].classList.remove(`${div[i].classList[2]}`);
+	}
+}
 	
-	// function startGame() {
-		// 	selectCard1();
-		//     selectCard2(); //include evaluate, if no winner then calls moveOne, if winner then prompts modal
-		// }
-		
-		//per Tyler office hours, this function determines the control flow of the event listeners
-		function checkIfFirstCard (evt) { 
-			if (isFirstCard) {
-				selectCard1(evt);
-			} else {
-				selectCard2(evt);
-			}
-			isFirstCard = !isFirstCard;
-		}
-		
+//per Tyler office hours, this function determines the control flow of the event listeners
+function checkIfFirstCard (evt) { 
+	if (isFirstCard) {
+		selectCard1(evt);
+	} else {
+		selectCard2(evt);
+	}
+	isFirstCard = !isFirstCard;
+}
+	
 		function selectCard1 (evt) {
 			if (evt.target.classList[1] === 'matchOne') {
 				evt.target.classList.add('matchOneFlip');
