@@ -4,8 +4,8 @@ const totalMatchesInGrid = 2;
 
 /*----- app's state (variables) -----*/
 let matchTracker = 0;
-
 let movesEvaluationArray = [];
+let isFirstCard = true;
 
 
 /*----- cached element references -----*/
@@ -14,8 +14,10 @@ const resetBtn = document.querySelector('button');
 let matchTrackerHeader = document.querySelector("h2");
 
 /*----- event listeners -----*/
-matchGrid.addEventListener('click', selectCard1);
-matchGrid.addEventListener('click', selectCard2);
+// matchGrid.addEventListener('click', selectCard1);
+matchGrid.addEventListener('click', function (event) {
+	checkIfFirstCard(event);
+});
 // resetBtn.addEventListener('click', init);
 
 /*----- functions -----*/
@@ -30,24 +32,37 @@ matchGrid.addEventListener('click', selectCard2);
 	// 	selectCard1();
 	//     selectCard2(); //include evaluate, if no winner then calls moveOne, if winner then prompts modal
 	// }
-	
+
+function checkIfFirstCard (evt) {
+	if (isFirstCard) {
+		selectCard1(evt);
+	} else {
+		selectCard2(evt);
+	}
+	isFirstCard = !isFirstCard;
+}
+console.log(isSecondCard);
+ 
 function selectCard1 (evt) {
 	//push class name of clicked element/card selected to moves array to change visual
-	movesEvaluationArray[0] = evt.target.getAttribute('class'); //both are showing an error that target is undefined, but it does get logged to array?
+	console.log(evt.target.classList);
+	movesEvaluationArray[0] = evt.target.classList[0]; //both are showing an error that target is undefined, but it does get logged to array?
+	// evt.stopImmediatePropagation(); // found stopImmProp to halt automatic double click i was seeing and try to allow for second click, but ceases to run any remaining event listeners https://stackoverflow.com/questions/33262256/add-click-event-after-another-click-event //
 	// movesEvaluationArray.push(evt.target.getAttribute('class'));
-	evt.stopImmediatePropagation(); // found stopImmProp to halt automatic double click i was seeing and try to allow for second click. https://stackoverflow.com/questions/33262256/add-click-event-after-another-click-event //
-	console.log(` this is moves array 0 output ${movesEvaluationArray[0]}`);
+	console.log(`this is moves array 0 output ${movesEvaluationArray[0]}`);
 	// return; //could this signal the break of the function?
-	selectCard2(); // not possible with return.
+	// remove event listener?
+
+	
 } 
 
 //need a solve for separating the clicks from each other as click 1 and click 2
 function selectCard2 (evt) {
-	movesEvaluationArray[1] = evt.target.getAttribute('class');
+	movesEvaluationArray[1] = evt.target.classList[0];
 	//push class name of clicked element/card selected to moves object to change visual
 	// evt.target.classList.add('class2');
 	console.log(` this is moves array 1 output ${movesEvaluationArray[1]}`);
-
+	
 	if (movesEvaluationArray[0] === movesEvaluationArray[1]) {
 		console.log("match!")
 		matchTracker++
@@ -61,7 +76,6 @@ function selectCard2 (evt) {
 		// remove class2 from both divs (reverting back to original)
 	}
 }
-
 
 
 // FIRST PASS AT PART TWO //
