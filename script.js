@@ -7,11 +7,13 @@ let matchTracker = 0;
 let movesEvaluationArray = [];
 let isFirstCard = true;
 let firstCardSelectedId = [];
-console.log(firstCardSelectedId)
+let firstCardIdEl;
+
 /*----- cached element references -----*/
 const matchGrid = document.querySelector('#grid'); //look into changing this to divs only.
 const resetBtn = document.querySelector('button');
 let matchTrackerHeader = document.querySelector("h2");
+
 
 /*----- event listeners -----*/
 // matchGrid.addEventListener('click', selectCard1);
@@ -26,35 +28,39 @@ matchGrid.addEventListener('click', function (event) {
 	// sets matchGrid divs to first class only/clears out any 2nd classes from previous matches
 	// }
 	
-// function modalWinner()
-
-// function startGame() {
-	// 	selectCard1();
-	//     selectCard2(); //include evaluate, if no winner then calls moveOne, if winner then prompts modal
-	// }
-
-	//per Tyler office hours, this function determines the control flow of the event listeners
-function checkIfFirstCard (evt) { 
-	if (isFirstCard) {
-		selectCard1(evt);
-	} else {
-		selectCard2(evt);
-	}
-	isFirstCard = !isFirstCard;
-}
-console.log(isFirstCard);
- 
-function selectCard1 (evt) {
-	if (evt.target.classList[1] === 'matchOne') {
-		evt.target.classList.add('matchOneFlip');
-	} else if (evt.target.classList[1] === 'matchTwo') {
-		evt.target.classList.add('matchTwoFlip');
-	}
-	movesEvaluationArray[0] = evt.target.classList[1]; 
-	firstCardSelectedId.push(evt.target.getAttribute("id"));
-	console.log(`this is moves array 0 output ${movesEvaluationArray[0]}`);	
+	// function modalWinner()
+	
+	// function startGame() {
+		// 	selectCard1();
+		//     selectCard2(); //include evaluate, if no winner then calls moveOne, if winner then prompts modal
+		// }
+		
+		//per Tyler office hours, this function determines the control flow of the event listeners
+		function checkIfFirstCard (evt) { 
+			if (isFirstCard) {
+				selectCard1(evt);
+			} else {
+				selectCard2(evt);
+			}
+			isFirstCard = !isFirstCard;
+		}
+		
+		function selectCard1 (evt) {
+			if (evt.target.classList[1] === 'matchOne') {
+				evt.target.classList.add('matchOneFlip');
+			} else if (evt.target.classList[1] === 'matchTwo') {
+				evt.target.classList.add('matchTwoFlip');
+			}
+			movesEvaluationArray[0] = evt.target.classList[1]; 
+				console.log(`This is moves array 0 output: ${movesEvaluationArray[0]}`);	
+			
+			firstCardSelectedId.push(evt.target.getAttribute("id"));
+				console.log(`ID logged from first card: ${firstCardSelectedId}`);
+			
+			firstCardIdEl = document.getElementById(`${firstCardSelectedId[0]}`);
+				console.log(`firstCardIdEl is ${firstCardIdEl}`);
 } 
-
+		
 function selectCard2 (evt) {
 	movesEvaluationArray[1] = evt.target.classList[1];
 	if (evt.target.classList[1] === 'matchOne') {
@@ -62,8 +68,8 @@ function selectCard2 (evt) {
 	} else if (evt.target.classList[1] === 'matchTwo') {
 		evt.target.classList.add('matchTwoFlip');
 	}
-	console.log(` this is moves array 1 output ${movesEvaluationArray[1]}`);
-	
+console.log(`This is moves array 1 output: ${movesEvaluationArray[1]}`);
+
 	if (movesEvaluationArray[0] === movesEvaluationArray[1]) {
 		console.log("match!")
 		matchTracker++
@@ -73,10 +79,15 @@ function selectCard2 (evt) {
 		}
 	} else {
 		matchTrackerHeader.innerText = "Not a match"
+		//reset the flipped cards to turned over 
 		setTimeout(function () {
 			evt.target.classList.remove(`${evt.target.classList[2]}`);
 		}, 2000);
-		document.querySelector(`#${firstCardSelectedId[0]}`).classList.remove(`${classList[2]}`);
+		setTimeout(function () {
+			firstCardIdEl.classList.remove(`${firstCardIdEl.classList[2]}`);
+		}, 2000);
+		//clear out first card selected ID array
+		firstCardSelectedId.pop()
 	}
 }
 
