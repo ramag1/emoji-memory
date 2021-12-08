@@ -12,15 +12,23 @@ body {
     justify-content: space-evenly;
     
 }
-
-.matchOne {
+.facedown {
     border: red 2px solid;
     width: 35%;
     height: 35%;
-    background-color: coral;
+    background-color: lemonchiffon;
 }
 
-.matchTwo {
+
+.facedown.matchOne.matchOneFlip {
+    border: red 2px solid;
+    width: 35%;
+    height: 35%;
+    background-color: purple;
+}
+
+
+.facedown.matchTwo.matchTwoFlip {
     border: red 2px solid;
     width: 35%;
     height: 35%;

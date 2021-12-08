@@ -6,10 +6,10 @@ const totalMatchesInGrid = 2;
 let matchTracker = 0;
 let movesEvaluationArray = [];
 let isFirstCard = true;
-
-
+let firstCardSelectedId = [];
+console.log(firstCardSelectedId)
 /*----- cached element references -----*/
-const matchGrid = document.querySelector('#grid');
+const matchGrid = document.querySelector('#grid'); //look into changing this to divs only.
 const resetBtn = document.querySelector('button');
 let matchTrackerHeader = document.querySelector("h2");
 
@@ -33,7 +33,8 @@ matchGrid.addEventListener('click', function (event) {
 	//     selectCard2(); //include evaluate, if no winner then calls moveOne, if winner then prompts modal
 	// }
 
-function checkIfFirstCard (evt) {
+	//per Tyler office hours, this function determines the control flow of the event listeners
+function checkIfFirstCard (evt) { 
 	if (isFirstCard) {
 		selectCard1(evt);
 	} else {
@@ -41,26 +42,26 @@ function checkIfFirstCard (evt) {
 	}
 	isFirstCard = !isFirstCard;
 }
-console.log(isSecondCard);
+console.log(isFirstCard);
  
 function selectCard1 (evt) {
-	//push class name of clicked element/card selected to moves array to change visual
-	console.log(evt.target.classList);
-	movesEvaluationArray[0] = evt.target.classList[0]; //both are showing an error that target is undefined, but it does get logged to array?
-	// evt.stopImmediatePropagation(); // found stopImmProp to halt automatic double click i was seeing and try to allow for second click, but ceases to run any remaining event listeners https://stackoverflow.com/questions/33262256/add-click-event-after-another-click-event //
-	// movesEvaluationArray.push(evt.target.getAttribute('class'));
-	console.log(`this is moves array 0 output ${movesEvaluationArray[0]}`);
-	// return; //could this signal the break of the function?
-	// remove event listener?
-
-	
+	if (evt.target.classList[1] === 'matchOne') {
+		evt.target.classList.add('matchOneFlip');
+	} else if (evt.target.classList[1] === 'matchTwo') {
+		evt.target.classList.add('matchTwoFlip');
+	}
+	movesEvaluationArray[0] = evt.target.classList[1]; 
+	firstCardSelectedId.push(evt.target.getAttribute("id"));
+	console.log(`this is moves array 0 output ${movesEvaluationArray[0]}`);	
 } 
 
-//need a solve for separating the clicks from each other as click 1 and click 2
 function selectCard2 (evt) {
-	movesEvaluationArray[1] = evt.target.classList[0];
-	//push class name of clicked element/card selected to moves object to change visual
-	// evt.target.classList.add('class2');
+	movesEvaluationArray[1] = evt.target.classList[1];
+	if (evt.target.classList[1] === 'matchOne') {
+		evt.target.classList.add('matchOneFlip');
+	} else if (evt.target.classList[1] === 'matchTwo') {
+		evt.target.classList.add('matchTwoFlip');
+	}
 	console.log(` this is moves array 1 output ${movesEvaluationArray[1]}`);
 	
 	if (movesEvaluationArray[0] === movesEvaluationArray[1]) {
@@ -68,34 +69,40 @@ function selectCard2 (evt) {
 		matchTracker++
 		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`
 		if (matchTracker === totalMatchesInGrid) {
-			// modalWinner()
+		// modalWinner()
 		}
 	} else {
 		matchTrackerHeader.innerText = "Not a match"
-		// movesArr.pop.pop() //clear out array to start over with new clicks
-		// remove class2 from both divs (reverting back to original)
+		setTimeout(function () {
+			evt.target.classList.remove(`${evt.target.classList[2]}`);
+		}, 2000);
+		document.querySelector(`#${firstCardSelectedId[0]}`).classList.remove(`${classList[2]}`);
 	}
 }
 
 
 // FIRST PASS AT PART TWO //
 // function moveTwo(evt) {
-// 	//assign class name of 2nd clicked element/card selected to moves object
-// 	evt.target.className = MOVES.moveTwo.cardSelected;
-// 	// turn over players choice by adding 2nd class to the element selected
-// 	evt.target.classList.add('class2');
-//     if (MOVES.moveOne.cardSelected !== MOVES.moveTwo.cardSelected) {
-//         // remove class2 in grid
-//         // MOVES.moveOne.cardSelected = "" to clear out existing plays
-//         // MOVES.moveTwo.cardSelected = ""
-//     } else {
-//         matchTracker++;
-//         if (matchTracker === totalMatchesInGrid) {
-//             // modalWinner()
-//         }
-//     }
-//     moveOne();
-// }
+	// 	//assign class name of 2nd clicked element/card selected to moves object
+	// 	evt.target.className = MOVES.moveTwo.cardSelected;
+	// 	// turn over players choice by adding 2nd class to the element selected
+	// 	evt.target.classList.add('class2');
+	//     if (MOVES.moveOne.cardSelected !== MOVES.moveTwo.cardSelected) {
+	//         // remove class2 in grid
+	//         // MOVES.moveOne.cardSelected = "" to clear out existing plays
+	//         // MOVES.moveTwo.cardSelected = ""
+	//     } else {
+		//         matchTracker++;
+		//         if (matchTracker === totalMatchesInGrid) {
+			//             // modalWinner()
+			//         }
+			//     }
+			//     moveOne();
+			// }
+			
+// evt.stopImmediatePropagation(); // found stopImmProp to halt automatic double click i was seeing and try to allow for second click, but ceases to run any remaining event listeners https://stackoverflow.com/questions/33262256/add-click-event-after-another-click-event //
+				
+
 
 
 //  MISC THOUGHTS & STRETCH IDEAS  //
