@@ -56,57 +56,55 @@ function checkIfFirstCard (evt) {
 	isFirstCard = !isFirstCard;
 }
 	
-		function selectCard1 (evt) {
-			matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`;
-			if (evt.target.classList[1] === 'matchOne') {
-				evt.target.classList.add('matchOneFlip');
-			} else if (evt.target.classList[1] === 'matchTwo') {
-				evt.target.classList.add('matchTwoFlip');
-			} else if (evt.target.classList[1] === 'matchThree') {
-				evt.target.classList.add('matchThreeFlip');
-			} else if (evt.target.classList[1] === 'matchFour') {
-				evt.target.classList.add('matchFourFlip');
-			} else if (evt.target.classList[1] === 'matchFive') {
-				evt.target.classList.add('matchFiveFlip');
-			} else if (evt.target.classList[1] === 'matchSix') {
-				evt.target.classList.add('matchSixFlip');
-			} else if (evt.target.classList[1] === 'matchSeven') {
-				evt.target.classList.add('matchSevenFlip');
-			} else if (evt.target.classList[1] === 'matchEight') {
-				evt.target.classList.add('matchEightFlip');
-			}
-			movesEvaluationArray[0] = evt.target.classList[1]; 
-				console.log(`This is moves array 0 output: ${movesEvaluationArray[0]}`);	
-			
-			firstCardSelectedId.push(evt.target.getAttribute("id"));
-				console.log(`ID logged from first card: ${firstCardSelectedId}`);
-			
-			firstCardIdEl = document.getElementById(`${firstCardSelectedId[0]}`);
-				console.log(`firstCardIdEl is ${firstCardIdEl}`);
+function selectCard1 (evt) {
+	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`;
+	if (evt.target.classList[1] === 'matchOne') {
+		evt.target.classList.add('matchOneFlip');
+	} else if (evt.target.classList[1] === 'matchTwo') {
+		evt.target.classList.add('matchTwoFlip');
+	} else if (evt.target.classList[1] === 'matchThree') {
+		evt.target.classList.add('matchThreeFlip');
+	} else if (evt.target.classList[1] === 'matchFour') {
+		evt.target.classList.add('matchFourFlip');
+	} else if (evt.target.classList[1] === 'matchFive') {
+		evt.target.classList.add('matchFiveFlip');
+	} else if (evt.target.classList[1] === 'matchSix') {
+		evt.target.classList.add('matchSixFlip');
+	} else if (evt.target.classList[1] === 'matchSeven') {
+		evt.target.classList.add('matchSevenFlip');
+	} else if (evt.target.classList[1] === 'matchEight') {
+		evt.target.classList.add('matchEightFlip');
+	}
+	movesEvaluationArray[0] = evt.target.classList[1]; 
+	
+	firstCardSelectedId.push(evt.target.getAttribute("id"));
+	console.log(firstCardSelectedId)
+
+	firstCardIdEl = document.getElementById(`${firstCardSelectedId[0]}`);
 } 
 		
 function selectCard2 (evt) {
 	movesEvaluationArray[1] = evt.target.classList[1];
-			if (evt.target.classList[1] === 'matchOne') {
-				evt.target.classList.add('matchOneFlip');
-			} else if (evt.target.classList[1] === 'matchTwo') {
-				evt.target.classList.add('matchTwoFlip');
-			} else if (evt.target.classList[1] === 'matchThree') {
-				evt.target.classList.add('matchThreeFlip');
-			} else if (evt.target.classList[1] === 'matchFour') {
-				evt.target.classList.add('matchFourFlip');
-			} else if (evt.target.classList[1] === 'matchFive') {
-				evt.target.classList.add('matchFiveFlip');
-			} else if (evt.target.classList[1] === 'matchSix') {
-				evt.target.classList.add('matchSixFlip');
-			} else if (evt.target.classList[1] === 'matchSeven') {
-				evt.target.classList.add('matchSevenFlip');
-			} else if (evt.target.classList[1] === 'matchEight') {
-				evt.target.classList.add('matchEightFlip');
-			}
-console.log(`This is moves array 1 output: ${movesEvaluationArray[1]}`);
+	if (evt.target.classList[1] === 'matchOne') {
+		evt.target.classList.add('matchOneFlip');
+	} else if (evt.target.classList[1] === 'matchTwo') {
+		evt.target.classList.add('matchTwoFlip');
+	} else if (evt.target.classList[1] === 'matchThree') {
+		evt.target.classList.add('matchThreeFlip');
+	} else if (evt.target.classList[1] === 'matchFour') {
+		evt.target.classList.add('matchFourFlip');
+	} else if (evt.target.classList[1] === 'matchFive') {
+		evt.target.classList.add('matchFiveFlip');
+	} else if (evt.target.classList[1] === 'matchSix') {
+		evt.target.classList.add('matchSixFlip');
+	} else if (evt.target.classList[1] === 'matchSeven') {
+		evt.target.classList.add('matchSevenFlip');
+	} else if (evt.target.classList[1] === 'matchEight') {
+		evt.target.classList.add('matchEightFlip');
+	}
+	console.log(evt.target.id)
 
-	if (movesEvaluationArray[0] === movesEvaluationArray[1]) {
+	if (movesEvaluationArray[0] === movesEvaluationArray[1] && evt.target.id !== firstCardSelectedId[0]) {
 		console.log("match!")
 		matchTracker++
 		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`
@@ -115,15 +113,17 @@ console.log(`This is moves array 1 output: ${movesEvaluationArray[1]}`);
 		// modalWinner()
 		}
 	} else {
-		// setInterval(function () {
-		// 	matchTrackerHeader.innerText = "Not a match" //add toggle here to flip back to the match count
+		setTimeout(function () {
+			matchTrackerHeader.innerText = "Not a match"}, 10);
+		setTimeout(function () {
+			matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`}, 700);
 		//reset the flipped cards to turned over 
 		setTimeout(function () {
 			evt.target.classList.remove(`${evt.target.classList[2]}`);
 		}, 2000);
 		setTimeout(function () {
 			firstCardIdEl.classList.remove(`${firstCardIdEl.classList[2]}`);
-		}, 2000);
+		}, 1980);
 		//clear out first card selected ID array
 		firstCardSelectedId.pop();
 	}
