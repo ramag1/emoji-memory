@@ -133,3 +133,5 @@ console.log(`This is moves array 1 output: ${movesEvaluationArray[1]}`);
 // Evaluate if (index 0 event target div class === index 1 event target div class)
 //  Yes apply class 3 and increment
 //  No remove class 2
+
+//  REQUIREMENTS  //
