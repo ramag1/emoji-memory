@@ -40,22 +40,24 @@ DECLARE
 
 STRETCH ideas
 to randomize, use array index with classes of emjois and then continue to add !== && statements 
+manage DIVS in javascript
+
+
+As a user, I want a browser-based interface so that I can play the game. DONE
+As a user, I want to select the game cards and see them turn over so that I can interact with the game. DONE
+As a user, I want matching cards to stay flipped over so I know I found a matching pair. DONE
+As a user, I want 1 win condition where all cards are matched and turned over, So I know that I have won.
+As a user, I want the game to reach a win state so that I know I won and can play again. 
+As a user, I want to see a WINNER screen pop up when I have won to celebrate.
 
 
 
-
-Pseudocode to Tic-Tac-Toe
-
-DECLARE constants for playerOne, playerTwo, 
-DECLARE state variables for currentPlayer, winState, moves
-
-REFERENCE gameBoard, resetBtn
-
-ATTACH event listner to gameBoard (handleClick)
-
-What's going to happen when a click is registered on the gameBoard?
-- Add element to gameboard that represents the player's token
-    - READ currentPlayer
-    - UPDATE the dom with the token
-- Check is there is a winner
-- Switch to the next player
+### Stretch Goals
+As a user, I want to see a timer on the consle to add difficulty to the game.
+As a user, I want to see the matched pairs disappear. 
+As a user, I want to see an animation when the cards flip over.
+As a user, I want to see a randomized order of cards for each new round.
+As a user, I want the ability to play a more challenging level after I win, featuring more cards.
+As a user, I want a pop up modal with instructions on how to play the game.
+As a user, I want to log my best time result in the game.
+As a user, I want to play and track a multitude of rounds on a scoreboard.

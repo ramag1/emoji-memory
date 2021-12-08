@@ -1,5 +1,5 @@
 /*----- constants -----*/
-const totalMatchesInGrid = 2;
+const totalMatchesInGrid = 8;
 const divCount= 16; 
 
 /*----- app's state (variables) -----*/
@@ -10,33 +10,32 @@ let firstCardSelectedId = [];
 let firstCardIdEl;
 
 /*----- cached element references -----*/
-const matchGrid = document.querySelector('#grid'); //look into changing this to divs only.
+const matchGrid = document.querySelector('#grid'); 
 const resetBtn = document.querySelector('button');
-let matchTrackerHeader = document.querySelector("h2");
-
 const div = document.querySelectorAll(".facedown");
+let matchTrackerHeader = document.querySelector("h2");
+const close = document.querySelector("#close")
 
 
 /*----- event listeners -----*/
-// matchGrid.addEventListener('click', selectCard1);
-// matchGrid.addEventListener('click', function (event) {
-// 	checkIfFirstCard(event);
-// });
 resetBtn.addEventListener('click', init);
-
 for (let i = 0; i < divCount; i++) {
 	div[i].addEventListener('click', function (event) {
 		checkIfFirstCard(event);
 	});
 }
+// close.addEventListener('click', closeModal);
 
 
 /*----- functions -----*/
 
-// function init() {
+const openModal = () => {
+	modal.style.display = 'block';
+};
 
-	
-	// function modalWinner()
+const closeModal = () => {
+	modal.style.display = 'none';
+};
 
 function init() {	
 	for (let i = 0; i < divCount; i++) {
@@ -110,13 +109,15 @@ function selectCard2 (evt) {
 		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`
 		firstCardSelectedId.pop();
 		if (matchTracker === totalMatchesInGrid) {
-		// modalWinner()
+			setTimeout(function () {
+				openModal()}, 5000);
+			closeModal();
 		}
 	} else {
 		setTimeout(function () {
 			matchTrackerHeader.innerText = "Not a match"}, 10);
 		setTimeout(function () {
-			matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`}, 700);
+			matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`}, 1980);
 		//reset the flipped cards to turned over 
 		setTimeout(function () {
 			evt.target.classList.remove(`${evt.target.classList[2]}`);
