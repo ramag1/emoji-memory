@@ -1,6 +1,6 @@
 /*----- constants -----*/
 const totalMatchesInGrid = 2;
-const divCount= 16;
+const divCount= 16; 
 
 /*----- app's state (variables) -----*/
 let matchTracker = 0;
@@ -19,13 +19,18 @@ const div = document.querySelectorAll(".facedown");
 
 /*----- event listeners -----*/
 // matchGrid.addEventListener('click', selectCard1);
-matchGrid.addEventListener('click', function (event) {
-	checkIfFirstCard(event);
-});
-resetBtn.addEventListener('click', init);
-// div.addEventListener('click', function (event) {
+// matchGrid.addEventListener('click', function (event) {
 // 	checkIfFirstCard(event);
 // });
+resetBtn.addEventListener('click', init);
+
+for (let i = 0; i < divCount; i++) {
+	div[i].addEventListener('click', function (event) {
+		checkIfFirstCard(event);
+	});
+}
+
+
 /*----- functions -----*/
 
 // function init() {
@@ -35,9 +40,10 @@ resetBtn.addEventListener('click', init);
 
 function init() {	
 	for (let i = 0; i < divCount; i++) {
-		console.log(div[i])	
 		div[i].classList.remove(`${div[i].classList[2]}`);
-	}
+	}	
+	matchTracker = 0;
+	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`;
 }
 	
 //per Tyler office hours, this function determines the control flow of the event listeners
@@ -51,6 +57,7 @@ function checkIfFirstCard (evt) {
 }
 	
 		function selectCard1 (evt) {
+			matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`;
 			if (evt.target.classList[1] === 'matchOne') {
 				evt.target.classList.add('matchOneFlip');
 			} else if (evt.target.classList[1] === 'matchTwo') {
@@ -108,7 +115,8 @@ console.log(`This is moves array 1 output: ${movesEvaluationArray[1]}`);
 		// modalWinner()
 		}
 	} else {
-		matchTrackerHeader.innerText = "Not a match"
+		// setInterval(function () {
+		// 	matchTrackerHeader.innerText = "Not a match" //add toggle here to flip back to the match count
 		//reset the flipped cards to turned over 
 		setTimeout(function () {
 			evt.target.classList.remove(`${evt.target.classList[2]}`);
