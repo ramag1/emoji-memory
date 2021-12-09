@@ -31,7 +31,8 @@ body {
     border: red 2px solid;
     width: 20%;
     height: 20%;
-    background-color: orange;
+    /* background-color: orange; */
+    background-image: url(./assets/airplane-emoji.png);
 }
 
 .facedown.matchThree.matchThreeFlip {
