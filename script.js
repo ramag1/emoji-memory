@@ -102,6 +102,7 @@ function init() {
 		div[i].classList.remove(`${div[i].classList[2]}`);
 	}
 	matchTracker = 0;
+	matchRemainingTracker = totalMatchesInGrid;
 	matchIdArr = [];
 	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n
 	Matches Remaining = ${matchRemainingTracker}`;
