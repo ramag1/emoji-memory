@@ -53,6 +53,8 @@ const totalMatchesInGrid = 8;
 let matchTracker = 0;
 //Decrements total matches in grid each time match is recorded
 let matchRemainingTracker = totalMatchesInGrid;
+//Increments each time selections are evaluated
+let matchAttempsTracker = 0;
 //Records click 1 classList and click 2 classList, to be evalated against each other to check if match
 let movesEvaluationArray = [];
 //Set to true to call clickOne function, flips to false to call clickTwo function
@@ -73,6 +75,7 @@ const modalWinnerEl = document.querySelector('#modal');
 const closeModalEl = document.querySelector('#close');
 const h2El = document.querySelector('h2');
 const divArrayShuffle = [];
+const statusEl= document.querySelector("#status")
 
 /*----- event listeners -----*/
 //Reset board when clicked
@@ -103,9 +106,11 @@ function init() {
 	}
 	matchTracker = 0;
 	matchRemainingTracker = totalMatchesInGrid;
+	matchAttempsTracker = 0
 	matchIdArr = [];
 	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n
-	Matches Remaining = ${matchRemainingTracker}`;
+	Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
+	statusEl.innerText="Ready to Play!"
 }
 
 //Per Tyler office hours, this function determines the control flow of the event listeners so the clicks are not simulatenous
@@ -121,7 +126,7 @@ function checkIfFirstCard(evt) {
 //Logs selected element from first click for later evaluation and reveals other side of card
 
 function selectCard1(evt) {
-	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n Matches Remaining = ${matchRemainingTracker}`;
+	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
 	if (evt.target.classList[1] === 'matchOne') {
 		evt.target.classList.add('matchOneFlip');
 	} else if (evt.target.classList[1] === 'matchTwo') {
@@ -142,6 +147,7 @@ function selectCard1(evt) {
 	movesEvaluationArray[0] = evt.target.classList[1];
 	firstCardSelectedId.push(evt.target.getAttribute('id'));
 	firstCardIdEl = document.getElementById(`${firstCardSelectedId[0]}`);
+
 }
 //Logs selected element from second click, reveals other side of card, and executes match conditional, evalutes win state
 function selectCard2(evt) {
@@ -165,20 +171,23 @@ function selectCard2(evt) {
 	}
 
 	if (matchIdArr.includes(evt.target.id)) {
-		matchTrackerHeader.innerText = 'You already made that match!';
-		setTimeout(function () {
-			matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n Matches Remaining = ${matchRemainingTracker}`;
-		}, 1500);
+		statusEl.innerText = 'You already made that match!';
+		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
 		matchTracker = matchTracker;
+		matchAttempsTracker++;
 	} else if (
 		movesEvaluationArray[0] === movesEvaluationArray[1] &&
 		evt.target.id !== firstCardSelectedId[0]
 	) {
 		console.log('match!');
 		matchTracker++;
-		matchRemainingTracker--
-		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n Matches Remaining = ${matchRemainingTracker}`;
-		matchIdArr.push(evt.target.id);
+		matchRemainingTracker--;
+		matchAttempsTracker++;
+		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
+		statusEl.innerText = 'Match Made!';
+		setTimeout(function () {
+			statusEl.innerText = 'Select Again';
+		}, 1300);matchIdArr.push(evt.target.id);
 		matchIdArr.push(firstCardSelectedId[0]);
 		console.log(matchIdArr);
 		firstCardSelectedId.pop();
@@ -186,12 +195,12 @@ function selectCard2(evt) {
 			openModal();
 		}
 	} else {
+		matchAttempsTracker++;
+		statusEl.innerText = 'Not a match';
 		setTimeout(function () {
-			matchTrackerHeader.innerText = '\n Not a match';
-		}, 10);
-		setTimeout(function () {
-			matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n  Matches Remaining = ${matchRemainingTracker}`;
+			statusEl.innerText = 'Select Again';
 		}, 1300);
+		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n  Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
 		//reset the flipped cards to turned over
 		setTimeout(function () {
 			evt.target.classList.remove(`${evt.target.classList[2]}`);

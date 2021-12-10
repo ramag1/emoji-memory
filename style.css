@@ -28,7 +28,16 @@ h2 {
     align-self: flex-start;
     text-align: center;
     width: 100%;
-    height:70%;
+    height:35%;
+}
+p {
+    font-size: 4vw;
+    color: rgb(19, 129, 118);
+    align-self: flex-start;
+    text-align: center;
+    width: 100%;
+    height:35%;
+
 }
 
 button {
@@ -143,7 +152,7 @@ button {
 }
 
 #modal {
-	background-color: rgba(0,0,0,0.4);
+	background-image: url(./assets/Colorful-Watercolor-Background-Graphics-8158369-1.jpeg);
 	position: fixed;
 	top: 0;
 	left: 0;
