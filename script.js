@@ -51,6 +51,8 @@ const totalMatchesInGrid = 8;
 /*----- app's state (variables) -----*/
 //Increments each time match is recorded, to be evaluated against totalMatchesInGrid to declare winstate
 let matchTracker = 0;
+//Decrements total matches in grid each time match is recorded
+let matchRemainingTracker = totalMatchesInGrid;
 //Records click 1 classList and click 2 classList, to be evalated against each other to check if match
 let movesEvaluationArray = [];
 //Set to true to call clickOne function, flips to false to call clickTwo function
@@ -184,6 +186,7 @@ function selectCard2(evt) {
 		setTimeout(function () {
 			matchTrackerHeader.innerText = 'Not a match';
 		}, 10);
+		matchRemainingTracker--
 		setTimeout(function () {
 			matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`;
 		}, 1980);

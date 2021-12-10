@@ -15,10 +15,13 @@ h2 {
 }
 
 button {
-    font-size: 35px;
+    font-size: 40px;
     font-family: 'Sacramento', cursive;
     text-align: center;
-    display: flex;
+    display: inline;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+
 
 }
 #grid {
