@@ -18,6 +18,7 @@ h1 {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
+    justify-content: space-evenly;
     height: 100%;
     width: 35%;
 }
@@ -151,7 +152,85 @@ button {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
+    background-image: url(./assets/ball-emoji.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.facedown.matchEight.matchNineFlip {
+   border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
+    width: 20%;
+    height: 20%;
     background-image: url(./assets/sweat-emoji.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.facedown.matchEight.matchTenFlip {
+   border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
+    width: 20%;
+    height: 20%;
+    background-image: url(./assets/hibiscus-emoji.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.facedown.matchEight.matchElevenFlip {
+   border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
+    width: 20%;
+    height: 20%;
+    background-image: url(./assets/lipstick-emoji.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.facedown.matchEight.matchTwelveFlip {
+   border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
+    width: 20%;
+    height: 20%;
+    background-image: url(./assets/moon-emoji.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.facedown.matchEight.matchThirteenFlip {
+   border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
+    width: 20%;
+    height: 20%;
+    background-image: url(./assets/palmtree-emoji.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.facedown.matchEight.matchFourteenFlip {
+   border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
+    width: 20%;
+    height: 20%;
+    background-image: url(./assets/sun-emoji.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.facedown.matchEight.matchFifteenFlip {
+   border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
+    width: 20%;
+    height: 20%;
+    background-image: url(./assets/sweat-emoji.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.facedown.matchEight.matchSixteenFlip {
+   border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
+    width: 20%;
+    height: 20%;
+    background-image: url(./assets/unicorn-emoji.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -165,7 +244,7 @@ button {
 	z-index: 1;
     height: 60%;
     width: 80%;
-    display: none;
+    /* display: none; */
 }
 
 #modal-textbox {

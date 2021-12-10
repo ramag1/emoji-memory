@@ -71,14 +71,16 @@ const modalWinnerEl = document.querySelector('#modal');
 const closeModalEl = document.querySelector('#close');
 const h2El = document.querySelector('h2');
 const divArraySelect = [];
-const statusEl= document.querySelector("#status")
+const statusEl = document.querySelector('#status');
+const levelTwoEl = document.querySelector('#levelTwo');
 
 /*----- event listeners -----*/
 //Reset board when clicked
-resetBtn.addEventListener('click', init);
+resetBtn.addEventListener('click', reset);
 //Close winner modal when clicked
 closeModalEl.addEventListener('click', closeModal);
-
+//TBD LEVEL TWO EVENT LISTENER MAY DELETE ///////////////////////
+// levelTwoEl.addEventListener('click', changeScript);
 
 /*----- functions -----*/
 //Winner modal
@@ -90,18 +92,26 @@ function closeModal() {
 	modalWinnerEl.style.display = 'none';
 }
 
+//TBD LEVEL TWO SCRIPT CHANGE  MAY DELETE///////////////////
+// function changeScript() {
+// 	let script = document.getElementById("level")
+// 	if (script.getAttribute("src")== `./src/script.js`) {
+// 		script.setAttribute("src",`./scr/scriptLevel2.js`)
+// 	} else
+// }
+
 //Resets the board to turned over cards after Reset button has been clicked
-function init() {
+function reset() {
 	for (let i = 0; i < totalMatchesInGrid * 2; i++) {
 		div[i].classList.remove(`${div[i].classList[2]}`);
 	}
 	matchTracker = 0;
 	matchRemainingTracker = totalMatchesInGrid;
-	matchAttempsTracker = 0
-	matchIdArr = []; 
+	matchAttempsTracker = 0;
+	matchIdArr = [];
 	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}\n
 	Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
-	statusEl.innerText="Ready to Play! \n Select A Card"
+	statusEl.innerText = 'Ready to Play! \n Select A Card';
 }
 
 //Per Tyler office hours, this function determines the control flow of the event listeners so the clicks are not simulatenous
@@ -148,7 +158,6 @@ function selectCard1(evt) {
 	movesEvaluationArray[0] = evt.target.classList[1];
 	firstCardSelectedId.push(evt.target.getAttribute('id'));
 	firstCardIdEl = document.getElementById(`${firstCardSelectedId[0]}`);
-
 }
 //Logs selected element from second click, reveals other side of card, and executes match conditional, evalutes win state
 function selectCard2(evt) {
