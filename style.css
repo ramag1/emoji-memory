@@ -157,15 +157,15 @@ button {
 }
 
 #modal {
-	background-image: url(./assets/Colorful-Watercolor-Background-Graphics-8158369-1.jpeg);
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
+	background-color: rgba(0,0,0,.15);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+    transform: translate(-50%,-50%);
 	z-index: 1;
+    height: 60%;
+    width: 80%;
     display: none;
-    display:flex;
 }
 
 #modal-textbox {
@@ -179,10 +179,19 @@ button {
     text-align: center;
 }
 #modal-textbox h1 {
-    font-size: 8vww;
-    width: ;
+    font-size: 2rem;
+}
+#close {
+    font-size: 2vw;
+}
+#levelTwo {
+    font-size: 2vw;
+}
+#modal-textbox li {
+    list-style: none;
+}
+#modal-textbox p {
+    font-size: 3vw;
 }
 
-#modal-textbox p {
-    font-size: 4vw;
-}
+@media max-width

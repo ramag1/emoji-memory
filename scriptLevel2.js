@@ -1,49 +1,26 @@
-// GAME BOARD ONLOAD BELOW //
-const divArray = [
-	[0, ['facedown', 'matchOne']],
-	[1, ['facedown', 'matchOne']],
-	[2, ['facedown', 'matchTwo']],
-	[4, ['facedown', 'matchThree']],
-	[6, ['facedown', 'matchFour']],
-	[8, ['facedown', 'matchFive']],
-	[10, ['facedown', 'matchSix']],
-	[12, ['facedown', 'matchSeven']],
-	[14, ['facedown', 'matchEight']],
-	[3, ['facedown', 'matchTwo']],
-	[5, ['facedown', 'matchThree']],
-	[7, ['facedown', 'matchFour']],
-	[9, ['facedown', 'matchFive']],
-	[11, ['facedown', 'matchSix']],
-	[13, ['facedown', 'matchSeven']],
-	[15, ['facedown', 'matchEight']],
-];
-const matchGrid = document.querySelector('#grid');
 
-//Fisher Yates Randomizing Div function below- sourced from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-function fisherYates(array) {
-	var count = array.length,
-		randomnumber,
-		temp;
-	while (count) {
-		randomnumber = (Math.random() * count--) | 0;
-		temp = array[count];
-		array[count] = array[randomnumber];
-		array[randomnumber] = temp;
-	}
-	return array;
-}
-fisherYates(divArray);
-
-divArray.forEach(function (div) {
-	const card = document.createElement('div');
-	card.id = div[0];
-	card.classList.add('facedown');
-	card.classList.add(div[1][1]);
-	matchGrid.append(card);
-});
 
 /*----- constants -----*/
 const totalMatchesInGrid = 8;
+const divArray = [
+    [0, ['facedown', 'matchOne']],
+    [1, ['facedown', 'matchOne']],
+    [2, ['facedown', 'matchTwo']],
+    [4, ['facedown', 'matchThree']],
+    [6, ['facedown', 'matchFour']],
+    [8, ['facedown', 'matchFive']],
+    [10, ['facedown', 'matchSix']],
+    [12, ['facedown', 'matchSeven']],
+    [14, ['facedown', 'matchEight']],
+    [3, ['facedown', 'matchTwo']],
+    [5, ['facedown', 'matchThree']],
+    [7, ['facedown', 'matchFour']],
+    [9, ['facedown', 'matchFive']],
+    [11, ['facedown', 'matchSix']],
+    [13, ['facedown', 'matchSeven']],
+    [15, ['facedown', 'matchEight']],
+];
+
 
 /*----- app's state (variables) -----*/
 //Increments each time match is recorded, to be evaluated against totalMatchesInGrid to declare winstate
@@ -56,52 +33,81 @@ let matchAttempsTracker = 0;
 let movesEvaluationArray = [];
 //Set to true to call clickOne function, flips to false to call clickTwo function
 let isFirstCard = true;
-//Records click 1 id to referenced in firstCardIdEl
+//Records click 1 id to reference in
 let firstCardSelectedId = [];
-//Click 1 unique identifer to be referenced in order to remove added class upon "no match" evaluation
+//Click 1 unique identifer to remove added class upon "no match" evaluation
 let firstCardIdEl;
 //Logs ID of all matches to ensure no duplicate matches get counted towards score (cheating guardrail)
 let matchIdArr = [];
 
 /*----- cached element references -----*/
+const matchGrid = document.querySelector('#grid');
 const resetBtn = document.querySelector('button');
 const div = document.querySelectorAll('.facedown');
 let matchTrackerHeader = document.querySelector('h2');
 const modalWinnerEl = document.querySelector('#modal');
 const closeModalEl = document.querySelector('#close');
 const h2El = document.querySelector('h2');
-const divArraySelect = [];
-const statusEl= document.querySelector("#status")
+const divArrayShuffle = [];
+const statusEl = document.querySelector('#status');
 
 /*----- event listeners -----*/
 //Reset board when clicked
 resetBtn.addEventListener('click', init);
 //Close winner modal when clicked
 closeModalEl.addEventListener('click', closeModal);
-
+//Log selected card when clicked, prevents misclicks from registering
+for (let i = 0; i < totalMatchesInGrid * 2; i++) {
+    divArrayShuffle.push(div[i]);
+	div[i].addEventListener('click', function (event) {
+        checkIfFirstCard(event);
+	});
+}
 
 /*----- functions -----*/
 //Winner modal
 function openModal() {
-	modalWinnerEl.style.display = 'block';
+    modalWinnerEl.style.display = 'block';
 }
 //Close modal
 function closeModal() {
-	modalWinnerEl.style.display = 'none';
+    modalWinnerEl.style.display = 'none';
+	init();
+}
+//Fisher Yates Randomizing Div function below- sourced from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+function fisherYates(array) {
+    var count = array.length,
+    randomnumber,
+    temp;
+    while (count) {
+        randomnumber = (Math.random() * count--) | 0;
+        temp = array[count];
+        array[count] = array[randomnumber];
+        array[randomnumber] = temp;
+    }
+    return array;
 }
 
+fisherYates(divArray);
+divArray.forEach(function (div) {
+    const card = document.createElement('div');
+    card.id = div[0];
+    card.classList.add('facedown');
+    card.classList.add(div[1][1]);
+    matchGrid.append(card);
+});
 //Resets the board to turned over cards after Reset button has been clicked
 function init() {
-	for (let i = 0; i < totalMatchesInGrid * 2; i++) {
-		div[i].classList.remove(`${div[i].classList[2]}`);
+    for (let i = 0; i < totalMatchesInGrid * 2; i++) {
+        div[i].classList.remove(`${div[i].classList[2]}`);
 	}
 	matchTracker = 0;
 	matchRemainingTracker = totalMatchesInGrid;
-	matchAttempsTracker = 0
-	matchIdArr = []; 
-	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}\n
+	matchAttempsTracker = 0;
+	matchIdArr = [];
+	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n
 	Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
-	statusEl.innerText="Ready to Play! \n Select A Card"
+	statusEl.innerText = 'Ready to Play! \n Select A Card';
 }
 
 //Per Tyler office hours, this function determines the control flow of the event listeners so the clicks are not simulatenous
@@ -114,18 +120,8 @@ function checkIfFirstCard(evt) {
 	isFirstCard = !isFirstCard;
 }
 
-//Log selected card when clicked, prevents misclicks oustide div from registering
-function startGame() {
-	for (let i = 0; i < totalMatchesInGrid * 2; i++) {
-		divArraySelect.push(div[i]);
-		div[i].addEventListener('click', function (event) {
-			checkIfFirstCard(event);
-		});
-	}
-}
-startGame();
-
 //Logs selected element from first click for later evaluation and reveals other side of card
+
 function selectCard1(evt) {
 	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
 	if (evt.target.classList[1] === 'matchOne') {
@@ -148,7 +144,6 @@ function selectCard1(evt) {
 	movesEvaluationArray[0] = evt.target.classList[1];
 	firstCardSelectedId.push(evt.target.getAttribute('id'));
 	firstCardIdEl = document.getElementById(`${firstCardSelectedId[0]}`);
-
 }
 //Logs selected element from second click, reveals other side of card, and executes match conditional, evalutes win state
 function selectCard2(evt) {
@@ -173,9 +168,6 @@ function selectCard2(evt) {
 
 	if (matchIdArr.includes(evt.target.id)) {
 		statusEl.innerText = 'You already made that match!';
-		setTimeout(function () {
-			statusEl.innerText = 'Select Again';
-		}, 1300);
 		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
 		matchTracker = matchTracker;
 		matchAttempsTracker++;
@@ -209,10 +201,10 @@ function selectCard2(evt) {
 		//reset the flipped cards to turned over
 		setTimeout(function () {
 			evt.target.classList.remove(`${evt.target.classList[2]}`);
-		}, 900);
+		}, 1300);
 		setTimeout(function () {
 			firstCardIdEl.classList.remove(`${firstCardIdEl.classList[2]}`);
-		}, 880);
+		}, 1280);
 		firstCardSelectedId.pop();
 	}
 }
