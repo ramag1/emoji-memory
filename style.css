@@ -45,59 +45,72 @@ button {
     border: red 2px solid;
     width: 20%;
     height: 20%;
-    /* background-color: red; */
     background-image: url(./assets/besties-emoji.png);
-    max-width: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .facedown.matchTwo.matchTwoFlip {
     border: red 2px solid;
     width: 20%;
     height: 20%;
-    background-color: orange;
-    /* background-image: url(./assets/airplane-emoji.png); */
+    background-image: url(./assets/airplane-emoji.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .facedown.matchThree.matchThreeFlip {
     border: red 2px solid;
     width: 20%;
     height: 20%;
-    background-color: yellow;
+    background-image: url(./assets/coffee-emoji.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .facedown.matchFour.matchFourFlip {
     border: red 2px solid;
     width: 20%;
     height: 20%;
-    background-color: green;
+    background-image: url(./assets/taco-emoji.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .facedown.matchFive.matchFiveFlip {
     border: red 2px solid;
     width: 20%;
     height: 20%;
-    background-color: blue;
+    background-image: url(./assets/fish-emoji.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .facedown.matchSix.matchSixFlip {
     border: red 2px solid;
     width: 20%;
     height: 20%;
-    background-color: hotpink;
+    background-image: url(./assets/money-emoji.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .facedown.matchSeven.matchSevenFlip {
     border: red 2px solid;
     width: 20%;
     height: 20%;
-    background-color: purple;
+    background-image: url(./assets/music-emoji.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .facedown.matchEight.matchEightFlip {
     border: red 2px solid;
     width: 20%;
     height: 20%;
-    background-color: lavender;
+    background-image: url(./assets/sweat-emoji.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 #modal {

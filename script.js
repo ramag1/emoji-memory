@@ -103,7 +103,8 @@ function init() {
 	}
 	matchTracker = 0;
 	matchIdArr = [];
-	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`;
+	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n
+	Matches Remaining = ${matchRemainingTracker}`;
 }
 
 //Per Tyler office hours, this function determines the control flow of the event listeners so the clicks are not simulatenous
@@ -119,7 +120,7 @@ function checkIfFirstCard(evt) {
 //Logs selected element from first click for later evaluation and reveals other side of card
 
 function selectCard1(evt) {
-	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`;
+	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n Matches Remaining = ${matchRemainingTracker}`;
 	if (evt.target.classList[1] === 'matchOne') {
 		evt.target.classList.add('matchOneFlip');
 	} else if (evt.target.classList[1] === 'matchTwo') {
@@ -165,7 +166,7 @@ function selectCard2(evt) {
 	if (matchIdArr.includes(evt.target.id)) {
 		matchTrackerHeader.innerText = 'You already made that match!';
 		setTimeout(function () {
-			matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`;
+			matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n Matches Remaining = ${matchRemainingTracker}`;
 		}, 1500);
 		matchTracker = matchTracker;
 	} else if (
@@ -174,7 +175,8 @@ function selectCard2(evt) {
 	) {
 		console.log('match!');
 		matchTracker++;
-		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`;
+		matchRemainingTracker--
+		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n Matches Remaining = ${matchRemainingTracker}`;
 		matchIdArr.push(evt.target.id);
 		matchIdArr.push(firstCardSelectedId[0]);
 		console.log(matchIdArr);
@@ -184,12 +186,11 @@ function selectCard2(evt) {
 		}
 	} else {
 		setTimeout(function () {
-			matchTrackerHeader.innerText = 'Not a match';
+			matchTrackerHeader.innerText = '\n Not a match';
 		}, 10);
-		matchRemainingTracker--
 		setTimeout(function () {
-			matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`;
-		}, 1980);
+			matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n  Matches Remaining = ${matchRemainingTracker}`;
+		}, 1300);
 		//reset the flipped cards to turned over
 		setTimeout(function () {
 			evt.target.classList.remove(`${evt.target.classList[2]}`);
