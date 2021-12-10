@@ -6,6 +6,7 @@ body {
 #grid {
     border: purple 1px solid;
     height: 100%;
+    width: 55%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -31,8 +32,8 @@ body {
     border: red 2px solid;
     width: 20%;
     height: 20%;
-    /* background-color: orange; */
-    background-image: url(./assets/airplane-emoji.png);
+    background-color: orange;
+    /* background-image: url(./assets/airplane-emoji.png); */
 }
 
 .facedown.matchThree.matchThreeFlip {
