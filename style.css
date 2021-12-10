@@ -18,26 +18,24 @@ h1 {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
-
     height: 100%;
     width: 35%;
 }
 h2 {
+    align-self: flex-start;
+    text-align: center;
+    width: 100%;
+    height:35%;
     font-size: 3vw;
     color: rgb(19, 129, 118);
-    align-self: flex-start;
-    text-align: center;
-    width: 100%;
-    height:35%;
 }
 p {
-    font-size: 4vw;
-    color: rgb(19, 129, 118);
     align-self: flex-start;
     text-align: center;
     width: 100%;
     height:35%;
-
+    font-size: 5vw;
+    color: rgb(19, 129, 118);
 }
 
 button {
@@ -49,27 +47,26 @@ button {
     background-color: rgba(0,0,0,0);
     border: none;
     font-family: 'Sacramento', cursive;
-    font-size: 5vw;
+    font-size: 4vw;
 }
 #gameboard {
-    margin: 0 auto;
+    display: flex;
     height: 100%;
     width: 100%;
-    display: flex;
+    margin: 0 auto;
 }
 
 #grid {
     border: 3px solid;
-    padding: 5em, 5em, 5em, 5em;
     border-image: url(./assets/border-image.jpeg)1;
-    margin: 0 auto;
-    height: 100%;
-    width: 60%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-content: space-around;
+    margin: 0 auto;
+    height: 100%;
+    width: 60%;
 }
 .facedown {
     border: lavenderblush 2px solid;
@@ -80,7 +77,8 @@ button {
 
 
 .facedown.matchOne.matchOneFlip {
-    border: red 2px solid;
+    border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
     background-image: url(./assets/besties-emoji.png);
@@ -89,7 +87,8 @@ button {
 }
 
 .facedown.matchTwo.matchTwoFlip {
-    border: red 2px solid;
+   border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
     background-image: url(./assets/airplane-emoji.png);
@@ -98,7 +97,8 @@ button {
 }
 
 .facedown.matchThree.matchThreeFlip {
-    border: red 2px solid;
+   border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
     background-image: url(./assets/coffee-emoji.png);
@@ -107,7 +107,8 @@ button {
 }
 
 .facedown.matchFour.matchFourFlip {
-    border: red 2px solid;
+   border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
     background-image: url(./assets/taco-emoji.png);
@@ -116,7 +117,8 @@ button {
 }
 
 .facedown.matchFive.matchFiveFlip {
-    border: red 2px solid;
+   border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
     background-image: url(./assets/fish-emoji.png);
@@ -125,7 +127,8 @@ button {
 }
 
 .facedown.matchSix.matchSixFlip {
-    border: red 2px solid;
+   border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
     background-image: url(./assets/money-emoji.png);
@@ -134,7 +137,8 @@ button {
 }
 
 .facedown.matchSeven.matchSevenFlip {
-    border: red 2px solid;
+   border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
     background-image: url(./assets/music-emoji.png);
@@ -143,7 +147,8 @@ button {
 }
 
 .facedown.matchEight.matchEightFlip {
-    border: red 2px solid;
+   border: 2px solid;
+    border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
     background-image: url(./assets/sweat-emoji.png);
@@ -159,15 +164,25 @@ button {
 	height: 100%;
 	width: 100%;
 	z-index: 1;
-	overflow: auto;
     display: none;
+    display:flex;
 }
 
 #modal-textbox {
 	background-color: white;
-	height: 350px;
-	width: 550px;
+    font-size: 3vw;
+	height: 70%;
+	width: 70%;
 	border-radius: 2px;
-	margin: 150px auto;
+	margin: 0 auto;
 	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+#modal-textbox h1 {
+    font-size: 8vww;
+    width: ;
+}
+
+#modal-textbox p {
+    font-size: 4vw;
 }
