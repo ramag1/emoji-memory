@@ -120,7 +120,7 @@ p {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/coffee-emoji.png);
+    background-image: url(./assets/hibiscus-emoji.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -150,7 +150,7 @@ p {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/money-emoji.png);
+    background-image: url(./assets/shavedice-emoji.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -160,7 +160,7 @@ p {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/music-emoji.png);
+    background-image: url(./assets/palmtree-emoji.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -305,6 +305,7 @@ p {
     list-style: none;
     width: 100%;
     text-align: center;
+    align-self: flex-end;
 }
 #modal-textbox p {
     width: 100%;
