@@ -1,120 +1,111 @@
-// GAME BOARD ONLOAD BELOW //
-const divArray = [
-	[0, ['facedown', 'matchOne']],
-	[1, ['facedown', 'matchOne']],
-	[2, ['facedown', 'matchTwo']],
-	[4, ['facedown', 'matchThree']],
-	[6, ['facedown', 'matchFour']],
-	[8, ['facedown', 'matchFive']],
-	[10, ['facedown', 'matchSix']],
-	[12, ['facedown', 'matchSeven']],
-	[14, ['facedown', 'matchEight']],
-	[3, ['facedown', 'matchTwo']],
-	[5, ['facedown', 'matchThree']],
-	[7, ['facedown', 'matchFour']],
-	[9, ['facedown', 'matchFive']],
-	[11, ['facedown', 'matchSix']],
-	[13, ['facedown', 'matchSeven']],
-	[15, ['facedown', 'matchEight']],
-];
-const matchGrid = document.querySelector('#grid');
 
-//Fisher Yates Randomizing Div function below- sourced from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-function fisherYates(array) {
-	var count = array.length,
+
+
+
+// divArray.forEach(function (div) {
+	// 	let card = document.createElement('div');
+	// 	card.id = div[0];
+	// 	card.classList.add('facedown');
+	// 	card.classList.add(div[1][1]);
+	// 	matchGrid.append(card);
+	// });
+	
+	/*----- constants -----*/
+	const totalMatchesInGrid = 8;
+	const divArray = [
+		[0, ['facedown', 'matchOne']],
+		[1, ['facedown', 'matchOne']],
+		[2, ['facedown', 'matchTwo']],
+		[4, ['facedown', 'matchThree']],
+		[6, ['facedown', 'matchFour']],
+		[8, ['facedown', 'matchFive']],
+		[10, ['facedown', 'matchSix']],
+		[12, ['facedown', 'matchSeven']],
+		[14, ['facedown', 'matchEight']],
+		[3, ['facedown', 'matchTwo']],
+		[5, ['facedown', 'matchThree']],
+		[7, ['facedown', 'matchFour']],
+		[9, ['facedown', 'matchFive']],
+		[11, ['facedown', 'matchSix']],
+		[13, ['facedown', 'matchSeven']],
+		[15, ['facedown', 'matchEight']],
+	];
+	
+	/*----- app's state (variables) -----*/
+	//Increments each time match is recorded, to be evaluated against totalMatchesInGrid to declare winstate
+	let matchTracker = 0;
+	//Decrements total matches in grid each time match is recorded
+	let matchRemainingTracker = totalMatchesInGrid;
+	//Increments each time selections are evaluated
+	let matchAttempsTracker = 0;
+	//Records click 1 classList and click 2 classList, to be evalated against each other to check if match
+	let movesEvaluationArray = [];
+	//Set to true to call clickOne function, flips to false to call clickTwo function
+	let isFirstCard = true;
+	//Records click 1 id to referenced in firstCardIdEl
+	let firstCardSelectedId = [];
+	//Click 1 unique identifer to be referenced in order to remove added class upon "no match" evaluation
+	let firstCardIdEl;
+	//Logs ID of all matches to ensure no duplicate matches get counted towards score (cheating guardrail)
+	let matchIdArr = [];
+	
+	/*----- cached element references -----*/
+	const resetBtn = document.querySelector('#reset');
+	const div = document.querySelectorAll('.facedown');
+	let matchTrackerHeader = document.querySelector('h2');
+	const modalWinnerEl = document.querySelector('#modal');
+	const closeModalEl = document.querySelector('#close');
+	const h2El = document.querySelector('h2');
+	const divArraySelect = [];
+	const statusEl = document.querySelector('#status');
+	const modeBtn = document.querySelector("mode")
+	const matchGrid = document.querySelector('#grid');
+	
+	
+	/*----- event listeners -----*/
+	//Reset board when clicked
+	resetBtn.addEventListener('click', reset);
+	//Close winner modal when clicked
+	closeModalEl.addEventListener('click', closeModal);
+	//Swich from Emoji to Superhero theme
+	// modeBtn.addEventListener("click", changeMode);
+	
+	/*----- functions -----*/
+	//Winner modal
+	function openModal() {
+		modalWinnerEl.style.display = 'block';
+	}
+	//Close modal
+	function closeModal() {
+		modalWinnerEl.style.display = 'none';
+	}
+	
+	//Fisher Yates Randomizing Div function below- sourced from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+	function fisherYates(array) {
+		var count = array.length,
 		randomnumber,
 		temp;
-	while (count) {
-		randomnumber = (Math.random() * count--) | 0;
-		temp = array[count];
-		array[count] = array[randomnumber];
-		array[randomnumber] = temp;
+		while (count) {
+			randomnumber = (Math.random() * count--) | 0;
+			temp = array[count];
+			array[count] = array[randomnumber];
+			array[randomnumber] = temp;
+		}
+		return array;
 	}
-	return array;
-}
-fisherYates(divArray);
 
-divArray.forEach(function (div) {
-	const card = document.createElement('div');
-	card.id = div[0];
-	card.classList.add('facedown');
-	card.classList.add(div[1][1]);
-	matchGrid.append(card);
-});
+	////////TBD LEVEL TWO SCRIPT CHANGE  MAY DELETE///////////////////
+	// function changeMode() {
+		//   let mode = document.getElementById('mode');
+		//   if (mode.getAttribute('href') == `./css/style.css`) {
+		//     mode.setAttribute('href', `./css/style2.css`);
+		// 	modeBtn.innerText= "Go To Emoji Mode";
+		//   } else {
+			//     mode.setAttribute('href', `./css/style.css`);
+			// 	modeBtn.innerText = 'Click for Superhero Mode';
+			//   }
+			// }
 
-/*----- constants -----*/
-const totalMatchesInGrid = 8;
-
-/*----- app's state (variables) -----*/
-//Increments each time match is recorded, to be evaluated against totalMatchesInGrid to declare winstate
-let matchTracker = 0;
-//Decrements total matches in grid each time match is recorded
-let matchRemainingTracker = totalMatchesInGrid;
-//Increments each time selections are evaluated
-let matchAttempsTracker = 0;
-//Records click 1 classList and click 2 classList, to be evalated against each other to check if match
-let movesEvaluationArray = [];
-//Set to true to call clickOne function, flips to false to call clickTwo function
-let isFirstCard = true;
-//Records click 1 id to referenced in firstCardIdEl
-let firstCardSelectedId = [];
-//Click 1 unique identifer to be referenced in order to remove added class upon "no match" evaluation
-let firstCardIdEl;
-//Logs ID of all matches to ensure no duplicate matches get counted towards score (cheating guardrail)
-let matchIdArr = [];
-
-/*----- cached element references -----*/
-const resetBtn = document.querySelector('button');
-const div = document.querySelectorAll('.facedown');
-let matchTrackerHeader = document.querySelector('h2');
-const modalWinnerEl = document.querySelector('#modal');
-const closeModalEl = document.querySelector('#close');
-const h2El = document.querySelector('h2');
-const divArraySelect = [];
-const statusEl = document.querySelector('#status');
-const levelTwoEl = document.querySelector('#levelTwo');
-
-/*----- event listeners -----*/
-//Reset board when clicked
-resetBtn.addEventListener('click', reset);
-//Close winner modal when clicked
-closeModalEl.addEventListener('click', closeModal);
-//TBD LEVEL TWO EVENT LISTENER MAY DELETE ///////////////////////
-// levelTwoEl.addEventListener('click', changeScript);
-
-/*----- functions -----*/
-//Winner modal
-function openModal() {
-	modalWinnerEl.style.display = 'block';
-}
-//Close modal
-function closeModal() {
-	modalWinnerEl.style.display = 'none';
-}
-
-//TBD LEVEL TWO SCRIPT CHANGE  MAY DELETE///////////////////
-// function changeScript() {
-// 	let script = document.getElementById("level")
-// 	if (script.getAttribute("src")== `./src/script.js`) {
-// 		script.setAttribute("src",`./scr/scriptLevel2.js`)
-// 	} else
-// }
-
-//Resets the board to turned over cards after Reset button has been clicked
-function reset() {
-	for (let i = 0; i < totalMatchesInGrid * 2; i++) {
-		div[i].classList.remove(`${div[i].classList[2]}`);
-	}
-	matchTracker = 0;
-	matchRemainingTracker = totalMatchesInGrid;
-	matchAttempsTracker = 0;
-	matchIdArr = [];
-	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}\n
-	Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
-	statusEl.innerText = 'Ready to Play! \n Select A Card';
-}
-
-//Per Tyler office hours, this function determines the control flow of the event listeners so the clicks are not simulatenous
 function checkIfFirstCard(evt) {
 	if (isFirstCard) {
 		selectCard1(evt);
@@ -123,17 +114,71 @@ function checkIfFirstCard(evt) {
 	}
 	isFirstCard = !isFirstCard;
 }
+			
+function createRandomBoard() {
+	fisherYates(divArray);
 
-//Log selected card when clicked, prevents misclicks oustide div from registering
-function startGame() {
-	for (let i = 0; i < totalMatchesInGrid * 2; i++) {
-		divArraySelect.push(div[i]);
-		div[i].addEventListener('click', function (event) {
+	for (let i = 0; i < divArray.length; i++) {
+		const card = document.createElement('div');
+		card.id = divArray[i][0];
+		card.classList.add('facedown');
+		card.classList.add(divArray[i][1][1]);
+		matchGrid.append(card);
+		card.addEventListener('click', function (event) {
 			checkIfFirstCard(event);
 		});
 	}
 }
-startGame();
+createRandomBoard();
+
+//Resets the board to turned over cards after Reset button has been clicked
+function reset() {
+	for (let i = 0; i < divArray.length; i++) {
+		div[i].classList.remove(`${classList[2]}`);
+		console.log(div)
+	}
+	matchTracker = 0;
+	matchRemainingTracker = totalMatchesInGrid;
+	matchAttempsTracker = 0;
+	matchIdArr = [];
+	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}\n
+	Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
+	statusEl.innerText = 'Ready to Play! \n Select A Card';
+	createRandomBoard();
+}
+reset()
+
+
+//Resets the board to turned over cards & reshuffle after Reset button has been clicked
+// function reset() {
+// 	for (let i = 0; i < totalMatchesInGrid * 2; i++) {
+// 		fisherYates(divArray);
+// 		matchGrid.remove(div[i]);
+// 	}
+
+// 	for (let i = 0; i < divArray.length; i++) {
+// 		const card = document.createElement('div');
+// 		card.id = divArray[i][0];
+// 		card.classList.add('facedown');
+// 		card.classList.add(divArray[i][1][1]);
+// 		matchGrid.append(card);
+// 		console.log(card);
+// 	}
+
+// 	console.log(matchGrid);
+// 	console.log(div);
+
+// 	matchTracker = 0;
+// 	matchRemainingTracker = totalMatchesInGrid;
+// 	matchAttempsTracker = 0;
+// 	matchIdArr = [];
+// 	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}\n
+// 	Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
+// 	statusEl.innerText = 'Ready to Play! \n Select A Card';
+// }
+
+//Per Tyler office hours, this function determines the control flow of the event listeners so the clicks are not simulatenous
+
 
 //Logs selected element from first click for later evaluation and reveals other side of card
 function selectCard1(evt) {

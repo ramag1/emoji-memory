@@ -1,12 +1,13 @@
 body {
     background-color: azure;
     height: 80vh;
-    background-image: url(./assets/Colorful-Watercolor-Background-Graphics-8158369-1.jpeg);
-    font-family: 'Sacramento', cursive;
+    /* background-image: url(./assets/background-image-city.jpeg); */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 h1 {
-    /* https://stackoverflow.com/questions/14431411/pure-css-to-make-font-size-responsive-based-on-dynamic-amount-of-characters */
     font-size: 8vw; 
     color: rgb(19, 129, 118);
     text-align: center;
@@ -47,7 +48,7 @@ button {
     height: 30%;
     background-color: rgba(0,0,0,0);
     border: none;
-    font-family: 'Sacramento', cursive;
+    font-family: 'Chakra Petch', sans-serif;
     font-size: 4vw;
 }
 #gameboard {
@@ -82,7 +83,7 @@ button {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/besties-emoji.png);
+    background-image: url(./assets/spiderman.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -92,7 +93,7 @@ button {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/airplane-emoji.png);
+    background-image: url(./assets/superman.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -102,7 +103,7 @@ button {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/coffee-emoji.png);
+    background-image: url(./assets/batman.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -112,7 +113,7 @@ button {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/taco-emoji.png);
+    background-image: url(./assets/venom.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -122,7 +123,7 @@ button {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/fish-emoji.png);
+    background-image: url(./assets/hulk.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -132,7 +133,7 @@ button {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/money-emoji.png);
+    background-image: url(./assets/ironman.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -142,7 +143,7 @@ button {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/music-emoji.png);
+    background-image: url(./assets/wolverine.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -152,85 +153,7 @@ button {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/ball-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.facedown.matchEight.matchNineFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/sweat-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.facedown.matchEight.matchTenFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/hibiscus-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.facedown.matchEight.matchElevenFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/lipstick-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.facedown.matchEight.matchTwelveFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/moon-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.facedown.matchEight.matchThirteenFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/palmtree-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.facedown.matchEight.matchFourteenFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/sun-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-.facedown.matchEight.matchFifteenFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/sweat-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-.facedown.matchEight.matchSixteenFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/unicorn-emoji.png);
+    background-image: url(./assets/blackpanther.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -283,7 +206,7 @@ button {
 
 @media (max-width: 500px) {
 body {
-    font-family: 'Courgette', cursive;
+    font-family: 'Chakra Petch', sans-serif;
 }
 #gameboard {
     display: flex;
@@ -343,7 +266,7 @@ button {
     height: 100%;
     background-color: rgba(0,0,0,0);
     border: none;
-    font-family: 'Courgette', cursive;
+    font-family: 'Chakra Petch', sans-serif;
     font-size: 1rem;
 }
 #modal-textbox h1 {
