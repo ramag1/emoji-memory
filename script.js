@@ -1,7 +1,4 @@
 
-
-
-
 // divArray.forEach(function (div) {
 	// 	let card = document.createElement('div');
 	// 	card.id = div[0];
@@ -56,10 +53,10 @@
 	const modalWinnerEl = document.querySelector('#modal');
 	const closeModalEl = document.querySelector('#close');
 	const h2El = document.querySelector('h2');
-	const divArraySelect = [];
 	const statusEl = document.querySelector('#status');
-	const modeBtn = document.querySelector("mode")
+	const modeBtn = document.querySelector("#mode")
 	const matchGrid = document.querySelector('#grid');
+	console.log(modeBtn)
 	
 	
 	/*----- event listeners -----*/
@@ -68,7 +65,7 @@
 	//Close winner modal when clicked
 	closeModalEl.addEventListener('click', closeModal);
 	//Swich from Emoji to Superhero theme
-	// modeBtn.addEventListener("click", changeMode);
+	modeBtn.addEventListener("click", changeMode);
 	
 	/*----- functions -----*/
 	//Winner modal
@@ -95,17 +92,16 @@
 	}
 
 	////////TBD LEVEL TWO SCRIPT CHANGE  MAY DELETE///////////////////
-	// function changeMode() {
-		//   let mode = document.getElementById('mode');
-		//   if (mode.getAttribute('href') == `./css/style.css`) {
-		//     mode.setAttribute('href', `./css/style2.css`);
-		// 	modeBtn.innerText= "Go To Emoji Mode";
-		//   } else {
-			//     mode.setAttribute('href', `./css/style.css`);
-			// 	modeBtn.innerText = 'Click for Superhero Mode';
-			//   }
-			// }
-
+	function changeMode() {
+		  let mode = document.getElementById('mode');
+		  if (mode.getAttribute('href') == `./css/style.css`) {
+		    mode.setAttribute('href', `./css/style2.css`);
+		  } else {
+			    mode.setAttribute('href', `./css/style.css`);
+			  }
+			}
+			
+//Per Tyler office hours, this function determines the control flow of the event listeners so the clicks are not simulatenous
 function checkIfFirstCard(evt) {
 	if (isFirstCard) {
 		selectCard1(evt);
@@ -117,7 +113,6 @@ function checkIfFirstCard(evt) {
 			
 function createRandomBoard() {
 	fisherYates(divArray);
-
 	for (let i = 0; i < divArray.length; i++) {
 		const card = document.createElement('div');
 		card.id = divArray[i][0];
@@ -134,55 +129,22 @@ createRandomBoard();
 //Resets the board to turned over cards after Reset button has been clicked
 function reset() {
 	for (let i = 0; i < divArray.length; i++) {
-		div[i].classList.remove(`${classList[2]}`);
+		div[i].classList.remove(`${classList[2]}`); //ISSUE HERE///////////////////////////////////////
 		console.log(div)
 	}
 	matchTracker = 0;
 	matchRemainingTracker = totalMatchesInGrid;
 	matchAttempsTracker = 0;
 	matchIdArr = [];
-	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}\n
-	Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
+	matchTrackerHeader.innerText = `Matches Made = ${matchTracker}\n
+ Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
 	statusEl.innerText = 'Ready to Play! \n Select A Card';
 	createRandomBoard();
 }
-reset()
-
-
-//Resets the board to turned over cards & reshuffle after Reset button has been clicked
-// function reset() {
-// 	for (let i = 0; i < totalMatchesInGrid * 2; i++) {
-// 		fisherYates(divArray);
-// 		matchGrid.remove(div[i]);
-// 	}
-
-// 	for (let i = 0; i < divArray.length; i++) {
-// 		const card = document.createElement('div');
-// 		card.id = divArray[i][0];
-// 		card.classList.add('facedown');
-// 		card.classList.add(divArray[i][1][1]);
-// 		matchGrid.append(card);
-// 		console.log(card);
-// 	}
-
-// 	console.log(matchGrid);
-// 	console.log(div);
-
-// 	matchTracker = 0;
-// 	matchRemainingTracker = totalMatchesInGrid;
-// 	matchAttempsTracker = 0;
-// 	matchIdArr = [];
-// 	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}\n
-// 	Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
-// 	statusEl.innerText = 'Ready to Play! \n Select A Card';
-// }
-
-//Per Tyler office hours, this function determines the control flow of the event listeners so the clicks are not simulatenous
-
 
 //Logs selected element from first click for later evaluation and reveals other side of card
 function selectCard1(evt) {
-	matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
+	matchTrackerHeader.innerText = `Matches Made = ${matchTracker} \n Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
 	if (evt.target.classList[1] === 'matchOne') {
 		evt.target.classList.add('matchOneFlip');
 	} else if (evt.target.classList[1] === 'matchTwo') {
@@ -230,7 +192,7 @@ function selectCard2(evt) {
 		setTimeout(function () {
 			statusEl.innerText = 'Select Again';
 		}, 1300);
-		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
+		matchTrackerHeader.innerText = `Matches Made = ${matchTracker} \n  Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
 		matchTracker = matchTracker;
 		matchAttempsTracker++;
 	} else if (
@@ -241,7 +203,7 @@ function selectCard2(evt) {
 		matchTracker++;
 		matchRemainingTracker--;
 		matchAttempsTracker++;
-		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
+		matchTrackerHeader.innerText = `Matches Made = ${matchTracker} \n  Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
 		statusEl.innerText = 'Match Made!';
 		setTimeout(function () {
 			statusEl.innerText = 'Select Again';
@@ -259,7 +221,7 @@ function selectCard2(evt) {
 		setTimeout(function () {
 			statusEl.innerText = 'Select Again';
 		}, 1300);
-		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker} \n  Matches Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
+		matchTrackerHeader.innerText = `Matches Made = ${matchTracker} \n  Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
 		//reset the flipped cards to turned over
 		setTimeout(function () {
 			evt.target.classList.remove(`${evt.target.classList[2]}`);
@@ -271,27 +233,6 @@ function selectCard2(evt) {
 	}
 }
 
-// FETCH API FOR EMOJI //
-
-// fetch(emojiUrl)
-// 	.then((res) => {
-// 		return res.json();
-// 	})
-// 	.then((res) => {
-
-// 	})
-// 	.catch((err) => {
-// 		console.log('There was an error', err);
-// 	});
-
-// 	} else {
-// 		matchTrackerHeader.innerText = "Not a match";
-// 		matchTrackerHeader.innerText = `Matches You've Made = ${matchTracker}`
-// 		evt.target.classList.remove(`${evt.target.classList[2]}`);
-// 		firstCardIdEl.classList.remove(`${firstCardIdEl.classList[2]}`);
-// 		firstCardSelectedId.pop();
-// 	}
-// }
 
 // FIRST PASS AT PART TWO //
 // function moveTwo(evt) {

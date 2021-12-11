@@ -11,7 +11,26 @@ h1 {
     color: rgb(19, 129, 118);
     text-align: center;
 }
+/* --------------------- DIVS ----------------------- */
+#gameboard {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
 
+#grid {
+    border: 3px solid;
+    border-image: url(./assets/border-image.jpeg)1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-around;
+    margin: 0 auto;
+    height: 100%;
+    width: 60%;
+}
 #console {
     border: 3px solid;
     border-image: url(./assets/border-image.jpeg)1;
@@ -39,7 +58,8 @@ p {
     color: rgb(19, 129, 118);
 }
 
-button {
+/* --------------------- BUTTONS ----------------------- */
+#mode {
     align-self: flex-end;
     justify-self: center;
     text-align: center;
@@ -49,26 +69,24 @@ button {
     border: none;
     font-family: 'Sacramento', cursive;
     font-size: 4vw;
+    text-decoration: underline;
+    color:rgb(19, 129, 118);
 }
-#gameboard {
-    display: flex;
-    height: 100%;
+#reset {
+    align-self: flex-end;
+    justify-self: center;
+    text-align: center;
     width: 100%;
-    margin: 0 auto;
+    height: 30%;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    font-family: 'Sacramento', cursive;
+    font-size: 4vw;
+    text-decoration: underline;
+    color:rgb(19, 129, 118);
 }
 
-#grid {
-    border: 3px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: space-around;
-    margin: 0 auto;
-    height: 100%;
-    width: 60%;
-}
+/* --------------------- CARDS ----------------------- */
 .facedown {
     border: lavenderblush 2px solid;
     width: 20%;
@@ -156,85 +174,7 @@ button {
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
-
-.facedown.matchEight.matchNineFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/sweat-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.facedown.matchEight.matchTenFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/hibiscus-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.facedown.matchEight.matchElevenFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/lipstick-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.facedown.matchEight.matchTwelveFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/moon-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.facedown.matchEight.matchThirteenFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/palmtree-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.facedown.matchEight.matchFourteenFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/sun-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-.facedown.matchEight.matchFifteenFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/sweat-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-.facedown.matchEight.matchSixteenFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/unicorn-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
+/* --------------------- MODAL ----------------------- */
 #modal {
 	background-color: rgba(0,0,0,.15);
 	position: absolute;
@@ -281,6 +221,7 @@ button {
     height: 20%;
 }
 
+/* --------------------- MOBILE ----------------------- */
 @media (max-width: 500px) {
 body {
     font-family: 'Courgette', cursive;
@@ -293,7 +234,7 @@ body {
     margin: 0 auto;
 }
 #grid {
-    padding: 
+
     border: 3px solid;
     border-image: url(./assets/border-image.jpeg)1;
     display: flex;
@@ -319,28 +260,34 @@ body {
 }
 
 h2 {
-    align-items: flex-start ;
-    text-align: center;
-    width: 48%;
-    height:35%;
+    width: 45%;
+    height:80%;
     font-size: .9rem;
     color: rgb(19, 129, 118);
 }
 p {
-    align-items: flex-start;
-    align-self: center;
     width: 30%;
-    height:35%;
+    height:80%;
     font-size: 1rem;
     color: rgb(19, 129, 118);
 }
 
-button {
-    align-self: flex-end;
-    align-items: baseline;
-    text-align: center;
-    width: 20%;
-    height: 100%;
+#buttonDiv {
+    height: 80%;
+    width: 10%;
+}
+
+#mode {
+    width: 100%;
+    height: 50%;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    font-family: 'Courgette', cursive;
+    font-size: 1rem;
+}
+#reset {
+    width: 100%;
+    height: 50%;
     background-color: rgba(0,0,0,0);
     border: none;
     font-family: 'Courgette', cursive;

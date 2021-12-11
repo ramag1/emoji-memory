@@ -1,56 +1,21 @@
+html {
+    background-color: black;
+}
+
 body {
-    background-color: azure;
     height: 80vh;
-    /* background-image: url(./assets/background-image-city.jpeg); */
+    background-image: url(./assets/background-image-city.jpeg);
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-position: center;
     font-family: 'Chakra Petch', sans-serif;
 }
 
 h1 {
     font-size: 8vw; 
-    color: rgb(19, 129, 118);
+    color: chartreuse;
     text-align: center;
 }
-
-#console {
-    border: 3px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 100%;
-    width: 35%;
-}
-h2 {
-    align-self: flex-start;
-    text-align: center;
-    width: 100%;
-    height:35%;
-    font-size: 3vw;
-    color: rgb(19, 129, 118);
-}
-p {
-    align-self: flex-start;
-    text-align: center;
-    width: 100%;
-    height:35%;
-    font-size: 5vw;
-    color: rgb(19, 129, 118);
-}
-
-button {
-    align-self: flex-end;
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    height: 30%;
-    background-color: rgba(0,0,0,0);
-    border: none;
-    font-family: 'Chakra Petch', sans-serif;
-    font-size: 4vw;
-}
+/* ----------------- DIVS ----------------- */
 #gameboard {
     display: flex;
     height: 100%;
@@ -70,8 +35,65 @@ button {
     height: 100%;
     width: 60%;
 }
+
+#console {
+    border: 3px solid;
+    border-image: url(./assets/border-image.jpeg)1;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 35%;
+}
+h2 {
+    align-self: flex-start;
+    text-align: center;
+    width: 100%;
+    height:35%;
+    font-size: 3vw;
+    color: chartreuse;
+}
+p {
+    align-self: flex-start;
+    text-align: center;
+    width: 100%;
+    height:35%;
+    font-size: 5vw;
+    color: chartreuse;
+}
+/* ---------------- BUTTONS ---------------------- */
+#mode {
+    align-self: flex-end;
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    height: 30%;
+    background-color: rgba(0,0,0,0);
+    font-family: 'Chakra Petch', sans-serif;
+    border: none;
+    font-size: 4vw;
+    text-decoration: underline;
+    color:chartreuse;
+}
+
+#reset {
+    align-self: flex-end;
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    height: 30%;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 4vw;
+    text-decoration: underline;
+    color:chartreuse;
+}
+
+/* ------------------CARDS------------------ */
 .facedown {
-    border: lavenderblush 2px solid;
+    border: chartreuse 2px solid;
     width: 20%;
     height: 20%;
     background-color: rgba(0, 0, 0, 0.05);
@@ -157,7 +179,7 @@ button {
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
-
+/* --------------------- MODAL --------------------- */
 #modal {
 	background-color: rgba(0,0,0,.15);
 	position: absolute;
@@ -204,6 +226,7 @@ button {
     height: 20%;
 }
 
+/* ----------------------- MOBILE ----------------------- */
 @media (max-width: 500px) {
 body {
     font-family: 'Chakra Petch', sans-serif;
@@ -216,7 +239,7 @@ body {
     margin: 0 auto;
 }
 #grid {
-    padding: 
+
     border: 3px solid;
     border-image: url(./assets/border-image.jpeg)1;
     display: flex;
@@ -232,42 +255,49 @@ body {
 #console {
     border: 3px solid;
     margin: 0 auto;
+    padding: 0px;
     border-image: url(./assets/border-image.jpeg)1;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
-    height: 15%;
+    justify-content: space-evenly;
+    height: 20%;
     width: 100%;
 }
 
 h2 {
-    align-items: flex-start ;
-    text-align: center;
-    width: 48%;
-    height:35%;
+    width: 45%;
+    height:80%;
     font-size: .9rem;
-    color: rgb(19, 129, 118);
+    color: chartreuse;
 }
 p {
-    align-items: flex-start;
-    align-self: center;
     width: 30%;
-    height:35%;
+    height:80%;
     font-size: 1rem;
-    color: rgb(19, 129, 118);
+    color: chartreuse;
 }
-
-button {
-    align-self: flex-end;
-    align-items: baseline;
-    text-align: center;
-    width: 20%;
-    height: 100%;
-    background-color: rgba(0,0,0,0);
+#buttonDiv {
+    height: 80%;
+    width: 10%;
+}
+#mode {
+    width: 100%;
+    height: 50%;
+    background-color: rgba(38, 255, 30, 0);
     border: none;
     font-family: 'Chakra Petch', sans-serif;
     font-size: 1rem;
+    color:chartreuse
+}
+#reset {
+    width: 100%;
+    height: 50%;
+    background-color: rgba(38, 255, 30, 0);
+    border: none;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 1rem;
+    color:chartreuse
 }
 #modal-textbox h1 {
     font-size: 2rem;
