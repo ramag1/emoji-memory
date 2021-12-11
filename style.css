@@ -282,6 +282,9 @@ button {
 }
 
 @media (max-width: 500px) {
+body {
+    font-family: 'Courgette', cursive;
+}
 #gameboard {
     display: flex;
     flex-wrap: wrap;
@@ -308,11 +311,10 @@ button {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     height: 15%;
     width: 100%;
 }
-
 
 h2 {
     align-self: flex-start;
@@ -339,7 +341,7 @@ button {
     height: 100%;
     background-color: rgba(0,0,0,0);
     border: none;
-    font-family: 'Sacramento', cursive;
+    font-family: 'Courgette', cursive;
     font-size: 1rem;
 }
 #modal-textbox h1 {
