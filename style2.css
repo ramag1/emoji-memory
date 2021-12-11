@@ -1,17 +1,21 @@
+html {
+    background-color: black;
+}
+
 body {
-    background-color: azure;
     height: 80vh;
-    background-image: url(./assets/Colorful-Watercolor-Background-Graphics-8158369-1.jpeg);
-    font-family: 'Sacramento', cursive;
+    background-image: url(./assets/background-image-city.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 h1 {
-    /* https://stackoverflow.com/questions/14431411/pure-css-to-make-font-size-responsive-based-on-dynamic-amount-of-characters */
     font-size: 8vw; 
-    color: rgb(19, 129, 118);
+    color: chartreuse;
     text-align: center;
 }
-/* --------------------- DIVS ----------------------- */
+/* ----------------- DIVS ----------------- */
 #gameboard {
     display: flex;
     height: 100%;
@@ -31,6 +35,7 @@ h1 {
     height: 100%;
     width: 60%;
 }
+
 #console {
     border: 3px solid;
     border-image: url(./assets/border-image.jpeg)1;
@@ -47,7 +52,7 @@ h2 {
     width: 100%;
     height:35%;
     font-size: 3vw;
-    color: rgb(19, 129, 118);
+    color: chartreuse;
 }
 p {
     align-self: flex-start;
@@ -55,10 +60,9 @@ p {
     width: 100%;
     height:35%;
     font-size: 5vw;
-    color: rgb(19, 129, 118);
+    color: chartreuse;
 }
-
-/* --------------------- BUTTONS ----------------------- */
+/* ---------------- BUTTONS ---------------------- */
 #mode {
     align-self: flex-end;
     justify-self: center;
@@ -66,12 +70,13 @@ p {
     width: 100%;
     height: 30%;
     background-color: rgba(0,0,0,0);
+    font-family: 'Chakra Petch', sans-serif;
     border: none;
-    font-family: 'Sacramento', cursive;
     font-size: 4vw;
     text-decoration: underline;
-    color:rgb(19, 129, 118);
+    color:chartreuse;
 }
+
 #reset {
     align-self: flex-end;
     justify-self: center;
@@ -80,15 +85,15 @@ p {
     height: 30%;
     background-color: rgba(0,0,0,0);
     border: none;
-    font-family: 'Sacramento', cursive;
+    font-family: 'Chakra Petch', sans-serif;
     font-size: 4vw;
     text-decoration: underline;
-    color:rgb(19, 129, 118);
+    color:chartreuse;
 }
 
-/* --------------------- CARDS ----------------------- */
+/* ------------------CARDS------------------ */
 .facedown {
-    border: lavenderblush 2px solid;
+    border: chartreuse 2px solid;
     width: 20%;
     height: 20%;
     background-color: rgba(0, 0, 0, 0.05);
@@ -100,7 +105,7 @@ p {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/besties-emoji.png);
+    background-image: url(./assets/spiderman.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -110,7 +115,7 @@ p {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/airplane-emoji.png);
+    background-image: url(./assets/superman.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -120,7 +125,7 @@ p {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/coffee-emoji.png);
+    background-image: url(./assets/batman.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -130,7 +135,7 @@ p {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/taco-emoji.png);
+    background-image: url(./assets/venom.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -140,7 +145,7 @@ p {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/fish-emoji.png);
+    background-image: url(./assets/hulk.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -150,7 +155,7 @@ p {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/money-emoji.png);
+    background-image: url(./assets/ironman.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -160,7 +165,7 @@ p {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/music-emoji.png);
+    background-image: url(./assets/wolverine.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -170,11 +175,11 @@ p {
     border-image: url(./assets/border-image.jpeg)1;
     width: 20%;
     height: 20%;
-    background-image: url(./assets/ball-emoji.png);
+    background-image: url(./assets/blackpanther.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
-/* --------------------- MODAL ----------------------- */
+/* --------------------- MODAL --------------------- */
 #modal {
 	background-color: rgba(0,0,0,.15);
 	position: absolute;
@@ -221,10 +226,10 @@ p {
     height: 20%;
 }
 
-/* --------------------- MOBILE ----------------------- */
+/* ----------------------- MOBILE ----------------------- */
 @media (max-width: 500px) {
 body {
-    font-family: 'Courgette', cursive;
+    font-family: 'Chakra Petch', sans-serif;
 }
 #gameboard {
     display: flex;
@@ -250,12 +255,13 @@ body {
 #console {
     border: 3px solid;
     margin: 0 auto;
+    padding: 0px;
     border-image: url(./assets/border-image.jpeg)1;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
-    height: 15%;
+    justify-content: space-evenly;
+    height: 20%;
     width: 100%;
 }
 
@@ -263,35 +269,35 @@ h2 {
     width: 45%;
     height:80%;
     font-size: .9rem;
-    color: rgb(19, 129, 118);
+    color: chartreuse;
 }
 p {
     width: 30%;
     height:80%;
     font-size: 1rem;
-    color: rgb(19, 129, 118);
+    color: chartreuse;
 }
-
 #buttonDiv {
     height: 80%;
     width: 10%;
 }
-
 #mode {
     width: 100%;
     height: 50%;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(38, 255, 30, 0);
     border: none;
-    font-family: 'Courgette', cursive;
+    font-family: 'Chakra Petch', sans-serif;
     font-size: 1rem;
+    color:chartreuse
 }
 #reset {
     width: 100%;
     height: 50%;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(38, 255, 30, 0);
     border: none;
-    font-family: 'Courgette', cursive;
+    font-family: 'Chakra Petch', sans-serif;
     font-size: 1rem;
+    color:chartreuse
 }
 #modal-textbox h1 {
     font-size: 2rem;

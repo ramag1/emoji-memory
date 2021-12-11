@@ -6,39 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300&family=Sacramento&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300&family=Sacramento&family=Satisfy&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Oxygen:wght@300&family=Sacramento&family=Satisfy&display=swap"
-        rel="stylesheet">
+    <!-- <link rel="stylesheet" href="style2.css"> -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&family=Courgette&family=Indie+Flower&family=Oxygen:wght@300&family=Sacramento&family=Satisfy&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
 
     <h1>The Game of Memory</h1>
+
     <div id="gameboard">
         <div id="console">
-            <h2>Matches You've Made = 0 <br>
-            Matches Remaining = 8 <br>
-            Attempts = 0</h2>
-            <p id="status">Ready To Play! Select A Card</p>
-            <button>Click To Reset</button>
+            <h2>Matches Made = 0 <br>
+                Remaining = 8 <br>
+                Attempts = 0</h2>
+                <p id="status">Ready To Play! Select a Card</p>
+            <div id="buttonDiv">
+                <button id="mode">Next</button>
+                <button id="reset">Reset</button>
+            </div>
         </div>
-
+        
         <div id="grid">
         </div>
     </div>
+    
     <div id="modal">
         <div id="modal-textbox">
             <h1>You Won!</h1>
             <p>Your memory is out of this world!</p>
             <ul>
                 <li><a id="close" href="#">Close</a></li>
-                <li><a id="levelTwo" href="#">Next Level</a></li>
             </ul>
         </div>
     </div>
-    <script id="level" src="script.js"></script>
-    <!-- <script src="scriptLevel2.js"></script> -->
+    <script src="script.js"></script>
 </body>
 </html>
