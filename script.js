@@ -67,6 +67,7 @@ function openModal() {
 //Close modal
 function closeModal() {
 	modalWinnerEl.style.display = 'none';
+	reset();
 }
 
 //Fisher Yates Randomizing Div function below- sourced from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
