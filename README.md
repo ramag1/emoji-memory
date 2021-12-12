@@ -1,7 +1,10 @@
-## Project Choice: Flashcards/Memory
+## Project Choice: The Game of Memory
 
 ## Project Description 
 A browser-based Memory game coded in JavaScript, HTML and CSS.
+
+Link to the [game](https://ramag1.github.io/emoji-memory/).
+![general outline](./assets/final-game.png)
 
 ## Wireframe
 ![general outline](./assets/wireframe-memojory-outline.png)
@@ -21,10 +24,9 @@ As a user, I want to see a WINNER screen pop up when I have won to celebrate.
 
 ### Stretch Goals
 As a user, I want to see a timer on the consle to add difficulty to the game.
+As a user, I want to see two modes of the game.
 As a user, I want to see the matched pairs disappear.
 As a user, I want to see an animation when the cards flip over.
 As a user, I want to see a randomized order of cards for each new round.
-As a user, I want the ability to play a more challenging level after I win, featuring more cards.
-As a user, I want a pop up modal with instructions on how to play the game.
-As a user, I want to log my best time result in the game.
-As a user, I want to play and track a multitude of rounds on a scoreboard.
+As a user, I want to be able to play this game on a mobile device.
+As a user, I want to log my best number of attempts in the game.

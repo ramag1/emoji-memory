@@ -5,6 +5,7 @@ html {
 body {
     height: 80vh;
     background-image: url(./assets/background-image-city.jpeg);
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     font-family: 'Chakra Petch', sans-serif;
@@ -189,7 +190,7 @@ p {
 	z-index: 1;
     height: 60%;
     width: 80%;
-    /* display: none; */
+    display: none;
 }
 
 #modal-textbox {

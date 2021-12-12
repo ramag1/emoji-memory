@@ -1,12 +1,4 @@
 
-// divArray.forEach(function (div) {
-// 	let card = document.createElement('div');
-// 	card.id = div[0];
-// 	card.classList.add('facedown');
-// 	card.classList.add(div[1][1]);
-// 	matchGrid.append(card);
-// });
-
 /*----- constants -----*/
 const totalMatchesInGrid = 8;
 const divArray = [
@@ -45,7 +37,7 @@ let firstCardSelectedId = [];
 let firstCardIdEl;
 //Logs ID of all matches to ensure no duplicate matches get counted towards score (cheating guardrail)
 let matchIdArr = [];
-	
+
 /*----- cached element references -----*/
 const resetBtn = document.querySelector('#reset');
 const div = document.querySelectorAll('.facedown');
@@ -57,15 +49,15 @@ const statusEl = document.querySelector('#status');
 const modeBtn = document.querySelector("#modeBtn")
 const matchGrid = document.querySelector('#grid');
 
-	
-	
+
+
 /*----- event listeners -----*/
 //Reset board when clicked
 resetBtn.addEventListener('click', reset);
 //Close winner modal when clicked
 closeModalEl.addEventListener('click', closeModal);
 //Swich from Emoji to Superhero theme
-// modeBtn.addEventListener("click", changeMode);
+modeBtn.addEventListener("click", changeMode);
 
 /*----- functions -----*/
 //Winner modal
@@ -91,17 +83,17 @@ function fisherYates(array) {
 	return array;
 }
 
-////////TBD LEVEL TWO SCRIPT CHANGE  MAY DELETE///////////////////
-// function changeMode() {
-// 	let mode = document.getElementById('mode');
-// 	console.log(mode)
-// 	if (mode.getAttribute('href') === './css/style.css') {
-// 	mode.setAttribute('href', './css/style2.css');
-// 	} else {
-// 		mode.setAttribute('href', './css/style.css');
-// 		}
-// 	}
-			
+
+// // ////////TBD LEVEL TWO SCRIPT CHANGE  MAY DELETE///////////////////
+function changeMode() {
+  if (mode.getAttribute('href') == `style.css`) {
+    mode.setAttribute('href', `style2.css`);
+  } else {
+    // if it's not, then leave it at style.css
+    mode.setAttribute('href', `style.css`);
+  }
+}		
+
 //Per Tyler office hours, this function determines the control flow of the event listeners so the clicks are not simulatenous
 function checkIfFirstCard(evt) {
 	if (isFirstCard) {
@@ -111,7 +103,7 @@ function checkIfFirstCard(evt) {
 	}
 	isFirstCard = !isFirstCard;
 }
-			
+
 function createRandomBoard() {
 	fisherYates(divArray);
 	for (let i = 0; i < divArray.length; i++) {
@@ -125,23 +117,24 @@ function createRandomBoard() {
 		});
 	}
 }
-createRandomBoard();
+//calling below to ensure page always loads with a fresh board
+createRandomBoard();		
 
 //Resets the board to turned over cards after Reset button has been clicked
-// function reset() {
-// 	for (let i = 0; i < divArray.length; i++) {
-// 		div[i].classList.remove(`${classList[2]}`); //ISSUE HERE///////////////////////////////////////
-// 		console.log(div)
-// 	}
-// 	matchTracker = 0;
-// 	matchRemainingTracker = totalMatchesInGrid;
-// 	matchAttempsTracker = 0;
-// 	matchIdArr = [];
-// 	matchTrackerHeader.innerText = `Matches Made = ${matchTracker}\n
-//  Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
-// 	statusEl.innerText = 'Ready to Play! \n Select A Card';
-// 	createRandomBoard();
-// }
+function reset() {
+	while (matchGrid.firstChild) {
+		matchGrid.removeChild(matchGrid.firstChild);
+	}
+	matchTracker = 0;
+	matchRemainingTracker = totalMatchesInGrid;
+	matchAttempsTracker = 0;
+	matchIdArr = [];
+	matchTrackerHeader.innerText = `Matches Made = ${matchTracker}
+	Remaining = ${matchRemainingTracker}
+	Attempts = ${matchAttempsTracker}`;
+	statusEl.innerText = 'Ready to Play! \n Select A Card';
+	createRandomBoard();
+}
 
 //Logs selected element from first click for later evaluation and reveals other side of card
 function selectCard1(evt) {
@@ -167,8 +160,9 @@ function selectCard1(evt) {
 	firstCardSelectedId.push(evt.target.getAttribute('id'));
 	firstCardIdEl = document.getElementById(`${firstCardSelectedId[0]}`);
 }
-//Logs selected element from second click, reveals other side of card, and executes match conditional, evalutes win state
+
 function selectCard2(evt) {
+	//logs second move to array to compare in match conditionals
 	movesEvaluationArray[1] = evt.target.classList[1];
 	if (evt.target.classList[1] === 'matchOne') {
 		evt.target.classList.add('matchOneFlip');
@@ -187,7 +181,7 @@ function selectCard2(evt) {
 	} else if (evt.target.classList[1] === 'matchEight') {
 		evt.target.classList.add('matchEightFlip');
 	}
-
+	
 	if (matchIdArr.includes(evt.target.id)) {
 		statusEl.innerText = 'You already made that match!';
 		setTimeout(function () {
@@ -199,78 +193,90 @@ function selectCard2(evt) {
 	} else if ( //match made below//
 		movesEvaluationArray[0] === movesEvaluationArray[1] &&
 		evt.target.id !== firstCardSelectedId[0]
-	) {
-		matchTracker++;
-		matchRemainingTracker--;
-		matchAttempsTracker++;
-		matchTrackerHeader.innerText = `Matches Made = ${matchTracker} \n  Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
-		statusEl.innerText = 'Match Made!';
-		setTimeout(function () {
-			statusEl.innerText = 'Select Again';
-		}, 1300);
-		matchIdArr.push(evt.target.id);
-		matchIdArr.push(firstCardSelectedId[0]);
-		console.log(matchIdArr);
-		firstCardSelectedId.pop();
-		if (matchTracker === totalMatchesInGrid) {
-			openModal();
+		) {
+			matchTracker++;
+			matchRemainingTracker--;
+			matchAttempsTracker++;
+			matchTrackerHeader.innerText = `Matches Made = ${matchTracker} \n  Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
+			statusEl.innerText = 'Match Made!';
+			setTimeout(function () {
+				statusEl.innerText = 'Select Again';
+			}, 1300);
+			matchIdArr.push(evt.target.id);
+			matchIdArr.push(firstCardSelectedId[0]);
+			console.log(matchIdArr);
+			firstCardSelectedId.pop();
+			if (matchTracker === totalMatchesInGrid) {
+				openModal();
+			}
+		} else { //if not a match below
+			matchAttempsTracker++;
+			statusEl.innerText = 'Not a match';
+			setTimeout(function () {
+				statusEl.innerText = 'Select Again';
+			}, 1300);
+			matchTrackerHeader.innerText = `Matches Made = ${matchTracker} \n  Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
+			//reset the flipped cards to turned over
+			setTimeout(function () {
+				evt.target.classList.remove(`${evt.target.classList[2]}`);
+			}, 900);
+			setTimeout(function () {
+				firstCardIdEl.classList.remove(`${firstCardIdEl.classList[2]}`);
+			}, 880);
+			firstCardSelectedId.pop();
 		}
-	} else { //if not a match below
-		matchAttempsTracker++;
-		statusEl.innerText = 'Not a match';
-		setTimeout(function () {
-			statusEl.innerText = 'Select Again';
-		}, 1300);
-		matchTrackerHeader.innerText = `Matches Made = ${matchTracker} \n  Remaining = ${matchRemainingTracker} \n Attempts = ${matchAttempsTracker}`;
-		//reset the flipped cards to turned over
-		setTimeout(function () {
-			evt.target.classList.remove(`${evt.target.classList[2]}`);
-		}, 900);
-		setTimeout(function () {
-			firstCardIdEl.classList.remove(`${firstCardIdEl.classList[2]}`);
-		}, 880);
-		firstCardSelectedId.pop();
 	}
-}
-
-
+	
+	
 // FIRST PASS AT PART TWO //
 // function moveTwo(evt) {
-// 	//assign class name of 2nd clicked element/card selected to moves object
-// 	evt.target.className = MOVES.moveTwo.cardSelected;
-// 	// turn over players choice by adding 2nd class to the element selected
-// 	evt.target.classList.add('class2');
-//     if (MOVES.moveOne.cardSelected !== MOVES.moveTwo.cardSelected) {
-//         // remove class2 in grid
-//         // MOVES.moveOne.cardSelected = "" to clear out existing plays
-//         // MOVES.moveTwo.cardSelected = ""
-//     } else {
-//         matchTracker++;
-//         if (matchTracker === totalMatchesInGrid) {
-//             // modalWinner()
-//         }
-//     }
-//     moveOne();
-// }
-
-// evt.stopImmediatePropagation(); // found stopImmProp to halt automatic double click i was seeing and try to allow for second click, but ceases to run any remaining event listeners https://stackoverflow.com/questions/33262256/add-click-event-after-another-click-event //
-
-//  MISC THOUGHTS & STRETCH IDEAS  //
-// Push div selected to array
-// Check winner of div classes are changed
-// If not matching toggle back to old div class
-// Set timeout div that is longer than game
-
-// While increment counter < pairs per page
-// Click -> new class added
-// If click A (added class) === click B  (added class) then apply class 3, (match! Opaque)
-// increment counter
-// Otherwise remove class (on timer) so original class is showing again
-
-// Click 1 - add class 2 and leave it, log in array for evaluation
-// Click 2 - add class 2, log in array for evaluation
-// Evaluate if (index 0 event target div class === index 1 event target div class)
-//  Yes apply class 3 and increment
-//  No remove class 2
-
-//  REQUIREMENTS  //
+	// 	//assign class name of 2nd clicked element/card selected to moves object
+	// 	evt.target.className = MOVES.moveTwo.cardSelected;
+	// 	// turn over players choice by adding 2nd class to the element selected
+	// 	evt.target.classList.add('class2');
+	//     if (MOVES.moveOne.cardSelected !== MOVES.moveTwo.cardSelected) {
+		//         // remove class2 in grid
+		//         // MOVES.moveOne.cardSelected = "" to clear out existing plays
+		//         // MOVES.moveTwo.cardSelected = ""
+		//     } else {
+			//         matchTracker++;
+			//         if (matchTracker === totalMatchesInGrid) {
+				//             // modalWinner()
+				//         }
+				//     }
+				//     moveOne();
+				// }
+				
+				// evt.stopImmediatePropagation(); // found stopImmProp to halt automatic double click i was seeing and try to allow for second click, but ceases to run any remaining event listeners https://stackoverflow.com/questions/33262256/add-click-event-after-another-click-event //
+				
+				//  MISC THOUGHTS & STRETCH IDEAS  //
+				// Push div selected to array
+				// Check winner of div classes are changed
+				// If not matching toggle back to old div class
+				// Set timeout div that is longer than game
+				
+				// While increment counter < pairs per page
+				// Click -> new class added
+				// If click A (added class) === click B  (added class) then apply class 3, (match! Opaque)
+				// increment counter
+				// Otherwise remove class (on timer) so original class is showing again
+				
+				// Click 1 - add class 2 and leave it, log in array for evaluation
+				// Click 2 - add class 2, log in array for evaluation
+				// Evaluate if (index 0 event target div class === index 1 event target div class)
+				//  Yes apply class 3 and increment
+				//  No remove class 2
+				
+				// divArray.forEach(function (div) {
+				// 	let card = document.createElement('div');
+				// 	card.id = div[0];
+				// 	card.classList.add('facedown');
+				// 	card.classList.add(div[1][1]);
+				// 	matchGrid.append(card);
+				// });
+				
+				
+				//Logs selected element from second click, reveals other side of card, and executes match conditional, evalutes win state
+				
+				//  REQUIREMENTS  //
+				
