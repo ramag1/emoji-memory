@@ -1,4 +1,3 @@
-
 /*----- constants -----*/
 const totalMatchesInGrid = 8;
 const divArray = [
@@ -49,8 +48,6 @@ const statusEl = document.querySelector('#status');
 const modeBtn = document.querySelector("#modeBtn")
 const matchGrid = document.querySelector('#grid');
 
-
-
 /*----- event listeners -----*/
 //Reset board when clicked
 resetBtn.addEventListener('click', reset);
@@ -84,14 +81,17 @@ function fisherYates(array) {
 	return array;
 }
 
-
 //Change Mode to Superhero- support from Melissa and Landon on implementation
 function changeMode() {
   if (mode.getAttribute('href') == `style.css`) {
     mode.setAttribute('href', `style2.css`);
+	modeBtn.innerHTML = `Play Emoji Game`;
+	reset();
   } else {
     // if it's not, then leave it at style.css
     mode.setAttribute('href', `style.css`);
+	modeBtn.innerHTML = "Play Superhero Game";
+	reset();
   }
 };		
 
@@ -205,7 +205,6 @@ function selectCard2(evt) {
 			}, 1300);
 			matchIdArr.push(evt.target.id);
 			matchIdArr.push(firstCardSelectedId[0]);
-			console.log(matchIdArr);
 			firstCardSelectedId.pop();
 			if (matchTracker === totalMatchesInGrid) {
 				openModal();

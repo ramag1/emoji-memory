@@ -1,317 +1,328 @@
 body {
-    background-color: azure;
-    height: 80vh;
-    background-image: url(./assets/Colorful-Watercolor-Background-Graphics-8158369-1.jpeg);
-    font-family: 'Sacramento', cursive;
+	background-color: azure;
+	height: 80vh;
+	background-image: url(./assets/Colorful-Watercolor-Background-Graphics-8158369-1.jpeg);
+	font-family: 'Sacramento', cursive;
 }
 
 h1 {
-    font-size: 5em; 
-    color: rgb(19, 129, 118);
-    text-align: center;
+	font-size: 5em;
+	color: rgb(19, 129, 118);
+	text-align: center;
 }
 /* --------------------- DIVS ----------------------- */
 #gameboard {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    margin: 0 auto;
+	display: flex;
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
 }
 
 #grid {
-    border: 3px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: space-around;
-    margin: 0 auto;
-    height: 100%;
-    width: 60%;
+	border: 3px solid;
+	border-image: url(./assets/border-image.jpeg) 1;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-content: space-around;
+	margin: 0 auto;
+	height: 100%;
+	width: 60%;
 }
+
 #console {
-    border: 3px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 100%;
-    width: 35%;
+	border: 3px solid;
+	border-image: url(./assets/border-image.jpeg) 1;
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+	justify-content: space-evenly;
+	height: 100%;
+	width: 35%;
 }
+
 h2 {
-    align-self: flex-start;
-    text-align: center;
-    width: 100%;
-    height:35%;
-    font-size: 2rem;
-    color: rgb(19, 129, 118);
+	align-self: flex-start;
+	text-align: center;
+	width: 100%;
+	height: 35%;
+	font-size: 2rem;
+	color: rgb(19, 129, 118);
 }
+
 p {
-    align-self: flex-start;
-    text-align: center;
-    width: 100%;
-    height:35%;
-    font-size: 3rem;
-    color: rgb(19, 129, 118);
+	align-self: flex-start;
+	text-align: center;
+	width: 100%;
+	height: 35%;
+	font-size: 3rem;
+	color: rgb(19, 129, 118);
 }
 
 /* --------------------- BUTTONS ----------------------- */
 #buttonDiv {
-    align-self: flex-start;
-    text-align: center;
-    width: 100%;
-    height:30%;
+	align-self: flex-start;
+	text-align: center;
+	width: 100%;
+	height: 30%;
 }
+
 #modeBtn {
-    background-color: rgba(0,0,0,0);
-    border: none ;
-    font-family: 'Sacramento', cursive;
-    font-size: 2rem;
-    text-decoration: underline;
-    color:rgb(19, 129, 118);
+	background-color: rgba(0, 0, 0, 0);
+	border: none;
+	font-family: 'Sacramento', cursive;
+	font-size: 2rem;
+	text-decoration: underline;
+	color: rgb(19, 129, 118);
 }
+
 #reset {
-    align-self: flex-end;
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    height: 30%;
-    background-color: rgba(0,0,0,0);
-    border: none;
-    font-family: 'Sacramento', cursive;
-    font-size: 2rem;
-    text-decoration: underline;
-    color:rgb(19, 129, 118);
+	align-self: flex-end;
+	justify-self: center;
+	text-align: center;
+	width: 100%;
+	height: 30%;
+	background-color: rgba(0, 0, 0, 0);
+	border: none;
+	font-family: 'Sacramento', cursive;
+	font-size: 2rem;
+	text-decoration: underline;
+	color: rgb(19, 129, 118);
 }
 
 /* --------------------- CARDS ----------------------- */
 .facedown {
-    border: lavenderblush 2px solid;
-    width: 20%;
-    height: 20%;
-    background-color: rgba(0, 0, 0, 0.05);
+	border: lavenderblush 2px solid;
+	width: 20%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.05);
 }
 
-
 .facedown.matchOne.matchOneFlip {
-    border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/besties-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+	border: 2px solid;
+	border-image: url(./assets/border-image.jpeg) 1;
+	width: 20%;
+	height: 20%;
+	background-image: url(./assets/besties-emoji.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
 }
 
 .facedown.matchTwo.matchTwoFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/airplane-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+	border: 2px solid;
+	border-image: url(./assets/border-image.jpeg) 1;
+	width: 20%;
+	height: 20%;
+	background-image: url(./assets/airplane-emoji.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
 }
 
 .facedown.matchThree.matchThreeFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/hibiscus-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+	border: 2px solid;
+	border-image: url(./assets/border-image.jpeg) 1;
+	width: 20%;
+	height: 20%;
+	background-image: url(./assets/hibiscus-emoji.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
 }
 
 .facedown.matchFour.matchFourFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/taco-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+	border: 2px solid;
+	border-image: url(./assets/border-image.jpeg) 1;
+	width: 20%;
+	height: 20%;
+	background-image: url(./assets/taco-emoji.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
 }
 
 .facedown.matchFive.matchFiveFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/fish-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+	border: 2px solid;
+	border-image: url(./assets/border-image.jpeg) 1;
+	width: 20%;
+	height: 20%;
+	background-image: url(./assets/fish-emoji.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
 }
 
 .facedown.matchSix.matchSixFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/shavedice-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+	border: 2px solid;
+	border-image: url(./assets/border-image.jpeg) 1;
+	width: 20%;
+	height: 20%;
+	background-image: url(./assets/shavedice-emoji.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
 }
 
 .facedown.matchSeven.matchSevenFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/palmtree-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+	border: 2px solid;
+	border-image: url(./assets/border-image.jpeg) 1;
+	width: 20%;
+	height: 20%;
+	background-image: url(./assets/palmtree-emoji.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
 }
 
 .facedown.matchEight.matchEightFlip {
-   border: 2px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    width: 20%;
-    height: 20%;
-    background-image: url(./assets/ball-emoji.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+	border: 2px solid;
+	border-image: url(./assets/border-image.jpeg) 1;
+	width: 20%;
+	height: 20%;
+	background-image: url(./assets/ball-emoji.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
 }
 /* --------------------- MODAL ----------------------- */
 #modal {
-	background-color: rgba(0,0,0,.15);
+	background-color: rgba(0, 0, 0, 0.15);
 	position: absolute;
 	top: 50%;
 	left: 50%;
-    transform: translate(-50%,-50%);
+	transform: translate(-50%, -50%);
 	z-index: 1;
-    height: 60%;
-    width: 80%;
-    /* display: none; */
+	height: 60%;
+	width: 80%;
+	display: none;
 }
 
 #modal-textbox {
 	background-color: white;
-    position: absolute;
+	position: absolute;
 	top: 50%;
 	left: 50%;
-    transform: translate(-50%,-50%);
-    height: 70%;
+	transform: translate(-50%, -50%);
+	height: 70%;
 	width: 70%;
 	margin: 0 auto;
-    text-align: center;
-    font-size: 2rem;
+	text-align: center;
+	font-size: 2rem;
 }
+
 #modal-textbox h1 {
-    text-align: center;
-    align-self:flex-start;
-    height: 20%;
-    width: 100%;
-    font-size: 3.5rem;
+	text-align: center;
+	align-self: flex-start;
+	height: 20%;
+	width: 100%;
+	font-size: 3.5rem;
 }
 
 #modal-textbox p {
-    width: 100%;
-    height: 10%;
-    font-size: 2rem;
+	width: 100%;
+	height: 10%;
+	font-size: 2rem;
 }
 
 #modal-textbox li {
-    list-style: none;
-    width: 100%;
-    height: 20%;
+	list-style: none;
+	width: 100%;
+	height: 20%;
 }
 
 /* --------------------- MOBILE ----------------------- */
 @media (max-width: 500px) {
-body {
-    font-family: 'Ruluko', sans-serif;
-}
-#gameboard {
-    display: flex;
-    flex-wrap: wrap;
-    height: 100%;
-    width: 100%;
-    margin: 0 auto;
-}
-#grid {
+	body {
+		font-family: 'Ruluko', sans-serif;
+	}
 
-    border: 3px solid;
-    border-image: url(./assets/border-image.jpeg)1;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: space-around;
-    margin: 0 auto;
-    height: 85%;
-    width: 100%;
-}
+	#gameboard {
+		display: flex;
+		flex-wrap: wrap;
+		height: 100%;
+		width: 100%;
+		margin: 0 auto;
+	}
 
-#console {
-    border: 3px solid;
-    margin: 0 auto;
-    border-image: url(./assets/border-image.jpeg)1;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: space-evenly;
-    height: 20%;
-    width: 100%;
-}
+	#grid {
+		border: 3px solid;
+		border-image: url(./assets/border-image.jpeg) 1;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		align-content: space-around;
+		margin: 0 auto;
+		height: 85%;
+		width: 100%;
+	}
 
-h2 {
-    width: 40%;
-    height:100%;
-    font-size: .9rem;
-    color: rgb(19, 129, 118);
-}
-p {
-    width: 40%;
-    height:100%;
-    font-size: 1rem;
-    color: rgb(19, 129, 118);
-}
+	#console {
+		border: 3px solid;
+		margin: 0 auto;
+		border-image: url(./assets/border-image.jpeg) 1;
+		display: flex;
+		flex-wrap: nowrap;
+		flex-direction: row;
+		justify-content: space-evenly;
+		height: 20%;
+		width: 100%;
+	}
 
-#buttonDiv {
-    height: 100%;
-    width: 20%;
-}
+	h2 {
+		width: 40%;
+		height: 100%;
+		font-size: 0.9rem;
+		color: rgb(19, 129, 118);
+	}
 
-#modeBtn {
-    width: 100%;
-    height: 50%;
-    background-color: rgba(0,0,0,0);
-    border: none;
-    font-family: 'Ruluko', sans-serif;
-    font-size: 1rem;
-}
-#reset {
-    width: 100%;
-    height: 50%;
-    background-color: rgba(0,0,0,0);
-    border: none;
-    font-family: 'Ruluko', sans-serif;
-    font-size: 1rem;
-}
-#modal {
-	display: none;
-}
+	p {
+		width: 40%;
+		height: 100%;
+		font-size: 1rem;
+		color: rgb(19, 129, 118);
+	}
 
-#modal-textbox h1 {
-    font-size: 2rem;
-    text-align: center;
-}
+	#buttonDiv {
+		height: 100%;
+		width: 20%;
+	}
 
-#modal-textbox ul {
-    font-size: 1rem;
-}
-#modal-textbox li {
-    list-style: none;
-    width: 100%;
-    text-align: center;
-    align-self: flex-end;
-}
-#modal-textbox p {
-    width: 100%;
-    font-size: 1.5rem;
-    text-align: center;
-}
+	#modeBtn {
+		width: 100%;
+		height: 50%;
+		background-color: rgba(0, 0, 0, 0);
+		border: none;
+		font-family: 'Ruluko', sans-serif;
+		font-size: 1rem;
+	}
+
+	#reset {
+		width: 100%;
+		height: 50%;
+		background-color: rgba(0, 0, 0, 0);
+		border: none;
+		font-family: 'Ruluko', sans-serif;
+		font-size: 1rem;
+	}
+
+	#modal {
+		display: none;
+	}
+
+	#modal-textbox h1 {
+		font-size: 2rem;
+		text-align: center;
+	}
+
+	#modal-textbox ul {
+		font-size: 1rem;
+	}
+
+	#modal-textbox li {
+		list-style: none;
+		width: 100%;
+		text-align: center;
+		align-self: flex-end;
+	}
+
+	#modal-textbox p {
+		width: 100%;
+		font-size: 1.5rem;
+		text-align: center;
+	}
 }

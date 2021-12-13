@@ -47,6 +47,7 @@ h1 {
     height: 100%;
     width: 35%;
 }
+
 h2 {
     align-self: flex-start;
     text-align: center;
@@ -55,6 +56,7 @@ h2 {
     font-size: 2rem;
     color: chartreuse;
 }
+
 p {
     align-self: flex-start;
     text-align: center;
@@ -70,6 +72,7 @@ p {
     width: 100%;
     height:30%;
 }
+
 #modeBtn {
     background-color: rgba(0,0,0,0);
     border: none;
@@ -100,7 +103,6 @@ p {
     height: 20%;
     background-color: rgba(0, 0, 0, 0.05);
 }
-
 
 .facedown.matchOne.matchOneFlip {
     border: 2px solid;
@@ -191,7 +193,7 @@ p {
 	z-index: 1;
     height: 60%;
     width: 80%;
-    /* display: none; */
+    display: none;
 }
 
 #modal-textbox {
@@ -206,6 +208,7 @@ p {
     text-align: center;
     font-size: 2rem;
 }
+
 #modal-textbox h1 {
     text-align: center;
     align-self:flex-start;
@@ -225,6 +228,7 @@ p {
     width: 100%;
     height: 20%;
 }
+
 #close {
     color: chartreuse;
     text-align: center;
@@ -235,6 +239,7 @@ p {
 body {
     font-family: 'Chakra Petch', sans-serif;
 }
+
 #gameboard {
     display: flex;
     flex-wrap: wrap;
@@ -242,6 +247,7 @@ body {
     width: 100%;
     margin: 0 auto;
 }
+
 #grid {
 
     border: 3px solid;
@@ -274,16 +280,19 @@ h2 {
     font-size: .9rem;
     color: chartreuse;
 }
+
 p {
     width: 40%;
     height:100%;
     font-size: 1rem;
     color: chartreuse;
 }
+
 #buttonDiv {
     height: 100%;
     width: 20%;
 }
+
 #modeBtn {
     width: 100%;
     height: 50%;
@@ -293,6 +302,7 @@ p {
     font-size: 1rem;
     color:chartreuse
 }
+
 #reset {
     width: 100%;
     height: 50%;
@@ -302,6 +312,7 @@ p {
     font-size: 1rem;
     color:chartreuse
 }
+
 #modal {
 	display: none;
 }
@@ -314,11 +325,13 @@ p {
 #modal-textbox ul {
     font-size: 1rem;
 }
+
 #modal-textbox li {
     list-style: none;
     width: 100%;
     text-align: center;
 }
+
 #modal-textbox p {
     width: 100%;
     text-align: center;
