@@ -85,7 +85,7 @@ function fisherYates(array) {
 }
 
 
-// // ////////TBD LEVEL TWO SCRIPT CHANGE  MAY DELETE///////////////////
+//Change Mode to Superhero- support from Melissa and Landon on implementation
 function changeMode() {
   if (mode.getAttribute('href') == `style.css`) {
     mode.setAttribute('href', `style2.css`);
@@ -93,17 +93,7 @@ function changeMode() {
     // if it's not, then leave it at style.css
     mode.setAttribute('href', `style.css`);
   }
-}		
-
-//Per Tyler office hours, this function determines the control flow of the event listeners so the clicks are not simulatenous
-function checkIfFirstCard(evt) {
-	if (isFirstCard) {
-		selectCard1(evt);
-	} else {
-		selectCard2(evt);
-	}
-	isFirstCard = !isFirstCard;
-}
+};		
 
 function createRandomBoard() {
 	fisherYates(divArray);
@@ -117,11 +107,11 @@ function createRandomBoard() {
 			checkIfFirstCard(event);
 		});
 	}
-}
-//calling below to ensure page always loads with a fresh board
+};
+//Invoking below to ensure page always loads with a fresh board
 createRandomBoard();		
 
-//Resets the board to turned over cards after Reset button has been clicked
+//Event handler for reset button 
 function reset() {
 	while (matchGrid.firstChild) {
 		matchGrid.removeChild(matchGrid.firstChild);
@@ -135,7 +125,17 @@ function reset() {
 	Attempts = ${matchAttempsTracker}`;
 	statusEl.innerText = 'Ready to Play! \n Select A Card';
 	createRandomBoard();
-}
+};
+
+//Per Tyler office hours, this function determines the control flow of the event listeners so the clicks are not simulatenous
+function checkIfFirstCard(evt) {
+	if (isFirstCard) {
+		selectCard1(evt);
+	} else {
+		selectCard2(evt);
+	}
+	isFirstCard = !isFirstCard;
+};
 
 //Logs selected element from first click for later evaluation and reveals other side of card
 function selectCard1(evt) {

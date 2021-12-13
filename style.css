@@ -6,8 +6,7 @@ body {
 }
 
 h1 {
-    /* https://stackoverflow.com/questions/14431411/pure-css-to-make-font-size-responsive-based-on-dynamic-amount-of-characters */
-    font-size: 8vw; 
+    font-size: 5em; 
     color: rgb(19, 129, 118);
     text-align: center;
 }
@@ -46,7 +45,7 @@ h2 {
     text-align: center;
     width: 100%;
     height:35%;
-    font-size: 3vw;
+    font-size: 2rem;
     color: rgb(19, 129, 118);
 }
 p {
@@ -54,21 +53,22 @@ p {
     text-align: center;
     width: 100%;
     height:35%;
-    font-size: 5vw;
+    font-size: 3rem;
     color: rgb(19, 129, 118);
 }
 
 /* --------------------- BUTTONS ----------------------- */
-#modeBtn {
-    align-self: flex-end;
-    justify-self: center;
+#buttonDiv {
+    align-self: flex-start;
     text-align: center;
     width: 100%;
-    height: 30%;
+    height:30%;
+}
+#modeBtn {
     background-color: rgba(0,0,0,0);
-    border: none;
+    border: none ;
     font-family: 'Sacramento', cursive;
-    font-size: 4vw;
+    font-size: 2rem;
     text-decoration: underline;
     color:rgb(19, 129, 118);
 }
@@ -81,7 +81,7 @@ p {
     background-color: rgba(0,0,0,0);
     border: none;
     font-family: 'Sacramento', cursive;
-    font-size: 4vw;
+    font-size: 2rem;
     text-decoration: underline;
     color:rgb(19, 129, 118);
 }
@@ -184,7 +184,7 @@ p {
 	z-index: 1;
     height: 60%;
     width: 80%;
-    display: none;
+    /* display: none; */
 }
 
 #modal-textbox {
@@ -197,22 +197,20 @@ p {
 	width: 70%;
 	margin: 0 auto;
     text-align: center;
-    font-size: 3vw;
+    font-size: 2rem;
 }
 #modal-textbox h1 {
     text-align: center;
     align-self:flex-start;
     height: 20%;
     width: 100%;
-    font-size: 6vw;
+    font-size: 3.5rem;
 }
 
 #modal-textbox p {
     width: 100%;
     height: 10%;
-    align-self: center;
-    font-size: 5vw;
-    text-align: center;
+    font-size: 2rem;
 }
 
 #modal-textbox li {
@@ -224,7 +222,7 @@ p {
 /* --------------------- MOBILE ----------------------- */
 @media (max-width: 500px) {
 body {
-    font-family: 'Courgette', cursive;
+    font-family: 'Ruluko', sans-serif;
 }
 #gameboard {
     display: flex;
@@ -254,27 +252,27 @@ body {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    justify-content: space-between;
-    height: 15%;
+    justify-content: space-evenly;
+    height: 20%;
     width: 100%;
 }
 
 h2 {
-    width: 45%;
-    height:80%;
+    width: 40%;
+    height:100%;
     font-size: .9rem;
     color: rgb(19, 129, 118);
 }
 p {
-    width: 30%;
-    height:80%;
+    width: 40%;
+    height:100%;
     font-size: 1rem;
     color: rgb(19, 129, 118);
 }
 
 #buttonDiv {
-    height: 80%;
-    width: 10%;
+    height: 100%;
+    width: 20%;
 }
 
 #modeBtn {
@@ -282,7 +280,7 @@ p {
     height: 50%;
     background-color: rgba(0,0,0,0);
     border: none;
-    font-family: 'Courgette', cursive;
+    font-family: 'Ruluko', sans-serif;
     font-size: 1rem;
 }
 #reset {
@@ -290,16 +288,20 @@ p {
     height: 50%;
     background-color: rgba(0,0,0,0);
     border: none;
-    font-family: 'Courgette', cursive;
+    font-family: 'Ruluko', sans-serif;
     font-size: 1rem;
 }
+#modal {
+	display: none;
+}
+
 #modal-textbox h1 {
     font-size: 2rem;
     text-align: center;
 }
 
 #modal-textbox ul {
-    font-size: 2vw;
+    font-size: 1rem;
 }
 #modal-textbox li {
     list-style: none;
@@ -309,7 +311,7 @@ p {
 }
 #modal-textbox p {
     width: 100%;
-    font-size: 3vw;
+    font-size: 1.5rem;
     text-align: center;
 }
 }
