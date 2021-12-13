@@ -4,11 +4,14 @@
 A browser-based Memory game coded in JavaScript, HTML and CSS.
 
 Link to the [game](https://ramag1.github.io/emoji-memory/).
-![general outline](./assets/final-game.png)
+![general outline](./assets/emoji-game.png)
+![general outline](./assets/superhero-game.png)
+
+## Installation Instructions
+Fork the repo and clone it down to your machine, then host on a live server!
 
 ## Wireframe
 ![general outline](./assets/wireframe-memojory-outline.png)
-
 
 ## User Stories
 
@@ -30,3 +33,9 @@ As a user, I want to see an animation when the cards flip over.
 As a user, I want to see a randomized order of cards for each new round.
 As a user, I want to be able to play this game on a mobile device.
 As a user, I want to log my best number of attempts in the game.
+
+## Open Issues & Challenges
+
+No functional open issues at this point.
+I have not figured out how to switch script files to add a second level yet, will continue to investigate.
+Biggest challenge here was drying up code and looking for most streamlined way to evaluate.
