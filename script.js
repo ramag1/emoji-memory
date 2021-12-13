@@ -123,7 +123,7 @@ function reset() {
 	matchTrackerHeader.innerText = `Matches Made = ${matchTracker}
 	Remaining = ${matchRemainingTracker}
 	Attempts = ${matchAttempsTracker}`;
-	statusEl.innerText = 'Ready to Play! \n Select A Card';
+	statusEl.innerText = 'Ready to Play! \n Select a Card';
 	createRandomBoard();
 };
 
